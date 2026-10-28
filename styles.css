@@ -1,0 +1,14 @@
+/* Estilos para el portal web */
+body {
+  font-family: system-ui, -apple-system, sans-serif;
+}
+
+.navbar-brand {
+  font-weight: 700;
+}
+
+/* Ajustes a la tabla del listado de clases */
+.quarto-listing-table th {
+  background-color: #f8fafc;
+  font-weight: 600;
+}
