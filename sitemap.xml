@@ -1,19 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://el-cito-verso.netlify.app/blog/index.html</loc>
-    <lastmod>2026-10-28T18:10:20.089Z</lastmod>
+    <loc>https://el-cito-verso.netlify.app/talleres/index.html</loc>
+    <lastmod>2026-10-28T20:26:43.548Z</lastmod>
   </url>
   <url>
-    <loc>https://el-cito-verso.netlify.app/index.html</loc>
-    <lastmod>2026-10-28T18:17:27.241Z</lastmod>
+    <loc>https://el-cito-verso.netlify.app/recursos/cuaderno-interactivo.html</loc>
+    <lastmod>2026-10-28T16:18:36.591Z</lastmod>
   </url>
   <url>
     <loc>https://el-cito-verso.netlify.app/extra.html</loc>
     <lastmod>2026-10-28T18:08:13.218Z</lastmod>
   </url>
   <url>
+    <loc>https://el-cito-verso.netlify.app/cursos/citoverso_II/programa_citoverso_II.html</loc>
+    <lastmod>2026-10-28T15:57:42.073Z</lastmod>
+  </url>
+  <url>
+    <loc>https://el-cito-verso.netlify.app/cursos/citoverso_I/programa_citoverso_I.html</loc>
+    <lastmod>2026-10-28T15:51:12.175Z</lastmod>
+  </url>
+  <url>
     <loc>https://el-cito-verso.netlify.app/blog/nota1.html</loc>
     <lastmod>2026-10-28T18:17:02.922Z</lastmod>
+  </url>
+  <url>
+    <loc>https://el-cito-verso.netlify.app/blog/index.html</loc>
+    <lastmod>2026-10-28T18:10:20.089Z</lastmod>
+  </url>
+  <url>
+    <loc>https://el-cito-verso.netlify.app/cursos/citoverso_I/index.html</loc>
+    <lastmod>2026-10-28T03:16:19.711Z</lastmod>
+  </url>
+  <url>
+    <loc>https://el-cito-verso.netlify.app/cursos/citoverso_II/index.html</loc>
+    <lastmod>2026-10-28T13:18:43.105Z</lastmod>
+  </url>
+  <url>
+    <loc>https://el-cito-verso.netlify.app/cursos/cursos.html</loc>
+    <lastmod>2026-10-28T16:26:07.631Z</lastmod>
+  </url>
+  <url>
+    <loc>https://el-cito-verso.netlify.app/index.html</loc>
+    <lastmod>2026-10-28T20:26:47.198Z</lastmod>
+  </url>
+  <url>
+    <loc>https://el-cito-verso.netlify.app/recursos/preparacion_entorno.html</loc>
+    <lastmod>2026-10-28T17:07:02.847Z</lastmod>
   </url>
 </urlset>

@@ -39,10 +39,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-acf12a64177840b8d86f2d4f01b2e9fb.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-dc7103c40e58456350469716d4f09efa.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-9b8ae573420e97dc3ac434d523853471.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -156,14 +156,8 @@ ul.task-list li input[type="checkbox"] {
 <div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article page-navbar">
 <!-- sidebar -->
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">En esta página</h2>
-   
-  <ul>
-  <li><a href="#sección-en-desarrollo" id="toc-sección-en-desarrollo" class="nav-link active" data-scroll-target="#sección-en-desarrollo">SECCIÓN EN DESARROLLO 🛠️</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
@@ -187,16 +181,26 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="sección-en-desarrollo" class="level1">
-<h1>SECCIÓN EN DESARROLLO 🛠️</h1>
-<p>Estamos calibrando los detectores y preparando contenidos de alta precisión para esta sección. Muy pronto estará disponible con todo el rigor metodológico que caracteriza a el <strong>CITOverso</strong>. ¡Vuelve pronto!</p>
+<div class="callout callout-style-default callout-caution callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Precaución</span>SECCIÓN EN DESARROLLO 🛠️
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Estamos calibrando los detectores y preparando contenidos de alta precisión para esta sección. Muy pronto estará disponible con todo el rigor metodológico que caracteriza a el <strong>CITOverso</strong>.</p>
+</div>
+</div>
+<p>Aquí encontrarás recursos y material de apoyo para el desarrollo de talleres junto a nuestros colaboradores comerciales e institucionales.</p>
 <hr>
 <div style="text-align: center; margin-top: 3rem; color: #6c757d; font-size: 0.9rem;">
 <p>Hecho con 💙 por CITOverso</p>
 </div>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -272,7 +276,7 @@ ul.task-list li input[type="checkbox"] {
     }
       var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
       var mailtoRegex = new RegExp(/^mailto:/);
-        var filterRegex = new RegExp('/' + window.location.host + '/');
+        var filterRegex = new RegExp("https:\/\/el-cito-verso\.netlify\.app");
       var isInternal = (href) => {
           return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
       }
