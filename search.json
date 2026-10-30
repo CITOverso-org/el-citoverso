@@ -67,7 +67,7 @@
     "href": "blog/index.html",
     "title": "BLOG Y ARTÍCULOS",
     "section": "",
-    "text": "Cómo optimizar compensaciones complejas en R\n\n\n\nR\n\nCompensación\n\nTutoriales\n\n\n\nUna guía rápida para evitar artefactos en paneles multicolores.\n\n\n\n\n\n6 jun 2026\n\n\nEl CITOverso\n\n\n\n\n\nNo hay resultados"
+    "text": "CICLO CELULAR\n\n\n\nR\n\nciclo celular\n\nTutoriales\n\n\n\nDe la tinción con ioduro de propidio al histograma: fundamentos y claves metodológicas para estudiar el ciclo celular por citometría de flujo\n\n\n\n\n\n6 jun 2026\n\n\nEl CITOverso\n\n\n\n\n\n\n\n\n\n\n\n\nCómo optimizar compensaciones complejas en R\n\n\n\nR\n\nCompensación\n\nTutoriales\n\n\n\nUna guía rápida para evitar artefactos en paneles multicolores.\n\n\n\n\n\n6 jun 2026\n\n\nEl CITOverso\n\n\n\n\n\nNo hay resultados"
   },
   {
     "objectID": "cursos/citoverso_I/index.html",
@@ -166,5 +166,215 @@
     "title": "PREPARACIÓN DEL ENTORNO: R, POSITRON Y PAQUETES",
     "section": "",
     "text": "Abre Positron y asegúrate de estar posicionado en la consola (no en la terminal del sistema). A continuación, instalaremos las dependencias necesarias por bloques.\nPaso 1: Paquetes desde CRAN\nCopia y ejecuta el siguiente comando en la consola para instalar las herramientas principales:\ninstall.packages(c(\"scattermore\", \"Rtsne\", \"circlize\", \"uwot\", \"ggplot2\"))\nPaso 2: Configuración del repositorio Bioconductor\nPara instalar paquetes especializados en citometría de flujo, requerimos el gestor oficial BiocManager(). Si ya lo tienes instalado, este bloque lo omitirá automáticamente: .\nif (!require(\"BiocManager\", quietly = TRUE))\n  install.packages(\"BiocManager\")\nBiocManager::install(version = \"3.23\")\nPaso 3: Instalación de paquetes de Bioconductor\nUna vez asegurado el gestor, copia y ejecuta este bloque para instalar los paquetes de análisis citométrico (como flowCore, FlowSOM y ggcyto):\nBiocManager::install(c(\"flowCore\", \"FlowSOM\", \"ggcyto\", \"flowWorkspace\", \"ComplexHeatmap\", \"CytoML\"))\nPaso 4: Verificación del entorno\nPara asegurarte de que todo se instaló correctamente y las librerías cargan sin problemas, copia y ejecuta este último bloque de código en la consola:\npaquetes &lt;- c(\"scattermore\", \"Rtsne\", \"circlize\", \"uwot\", \"ggplot2\", \"flowCore\", \"FlowSOM\", \"ggcyto\", \"flowWorkspace\")\ninvisible(lapply(paquetes, library, character.only = TRUE))\n\n\n\n\n\n\nNotaNota\n\n\n\nSi no aparece ningún error de tipo \"there is no package called...\", tu entorno está listo para el curso.\n\n\n\n\nHecho con 💙 por CITOverso"
+  },
+  {
+    "objectID": "blog/ciclo.html",
+    "href": "blog/ciclo.html",
+    "title": "CICLO CELULAR",
+    "section": "",
+    "text": "*Imagen tomada de internet\nEl análisis del ciclo celular por citometría de flujo utilizando únicamente agentes intercaladores del AD (como el yoduro de propidio o el DAPI) permite responder a preguntas generales relacionadas con la distribución de las células en las distintas fases del ciclo y la cuantificación del contenido de ADN.\n *Video realizado con Gemini 3.5 Flash-Lite.\n\n¿Qué porcentaje de células se encuentran en cada fase del ciclo celular? Permite determinar la proporción exacta de poblaciones selulares en las fases G0/G1 (células con contenido de ADn diploide o 2N), la fase S (síntesis y rerplicación activa del ADN con contenidos intermedios) y las fases G2/M (células con contenido de ADN tetraploide o 4N).\n¿Existe alteración o bloqueo en la proliferación celular? Permite evaluar si un tratamiento (como fármacos, radiación o compuestos tóxicos) detiene el ciclo celular en un punto de control específico (por ejemplo, un bloqueo en la fase G2/M o S).\n¿Cuál es la fracción de células con contenido de ADN sub-diploide (apoptosis)? Facilita la identificación y cuantificación de picos o poblaciones con menor cantidad de ADN (sub-G1), lo cual es un marcador clásico de fragmentación del ADN asociadas a muerte celular programada o apoptosis.\n¿Se ha induciod poliploidía o aneuploidía? Permite detectar anomalías donde las células multiplican su dotación cromosómica más allá de lo normal (por ejemplo, células con contenidos de ADN de 8N o superiores, o picos aneuploides en líneas celulares tumorales)."
+  },
+  {
+    "objectID": "blog/ciclo.html#citómetro-de-flujo",
+    "href": "blog/ciclo.html#citómetro-de-flujo",
+    "title": "CICLO CELULAR",
+    "section": "CITÓMETRO DE FLUJO",
+    "text": "CITÓMETRO DE FLUJO\n *Imagen realizada con Gemini 3.5 Flash-Lite."
+  },
+  {
+    "objectID": "blog/ciclo.html#canales-de-imagen",
+    "href": "blog/ciclo.html#canales-de-imagen",
+    "title": "CICLO CELULAR",
+    "section": "CANALES DE IMAGEN",
+    "text": "CANALES DE IMAGEN\n\nFSC\nSSC (Imaging)\nLight Loss (violeta): Pérdida de luz se puede medir a partir del láser violeta además del láser azul.\n\n\n\n\n\n\n\nImportante\n\n\n\nSolo se puede utilizar el láser azul para generar imágenes de pérdida de luz.\nEl láser violeta se puede utilizar para diferenciar el tamaño y sirve como alternativa a la dispersión frontal (forward scatter) para separar subpoblaciones clásicas de sangre total.\n\n\n\nLight Loss (Imaging): La pérdida de luz que genera imágenes se puede medir a partir del láser azul (de imágenes).\n\nA medida que las partículas (células) atraviesan el láser, la interacción de la luz con la partícula da como resultado una dispersión en todas direcciones.\nLa pérdida de luz es una medida de la luz (fotones) que se pierde del láser debido a la dispersión y la absorción de luz por parte de una partícula (célula).\nLas imágenes de pérdida de luz son similares a la microscopía de campo claro.\n\nImgB1 (535)\nImgB2 (600)\nImgB3 (790)"
+  },
+  {
+    "objectID": "blog/ciclo.html#parámetros-de-imagen",
+    "href": "blog/ciclo.html#parámetros-de-imagen",
+    "title": "CICLO CELULAR",
+    "section": "PARÁMETROS DE IMAGEN",
+    "text": "PARÁMETROS DE IMAGEN\n\nExcentricidad: Una relación entre el eje más corto y el eje más largo (momento) dentro de la región de análisis (ROA).\n\n\n\n\n\n\n\nNota\n\n\n\nEs un parámetro matemático o morfológico que describe que tan alargada o simétrica es una célula o partícula.\n\n\n¿Cómo se calcula?\nEl sistema toma el ROA de una célula y calcula sus eje principales:\n\nIdentifica el eje más largo (su longitud máxima).\nIdentifica el eje más corto (su ancho máximo o perpendicular al anterior).\nLa **excentricidad es la proporción (cociente) entre ambos (eje corto / eje largo).\n\n *Imagen realizada con Gemini 3.5 Flash-Lite.\n¿Cómo interpretarla en la práctica?\n\nCélula redonda (Linfocito o esfera perfecta): Con una forma casi circular, presenta una Excentricidad alta, cercana a 1.0.\nCélula ovalada (Monocito activado): Al estar moderadamente alargada, su valor de excentricidad desciende, situándose alrededor de 0.5 - 0.7.\nCélula filiforme/artefacto: Al ser muy alargada y delgada, su valor de excentricidad es muy baja, indicando una alta asimetría, con un valor cercano a 0.1 - 0.3.\n\nMOMENTO RADIAL: La distancia promedio de los píxeles desde el centroide dentro de la Región de Análisis.\nEste parámetro describe la distribución espacial de los píxeles en relación con el centro de la célula.\n¿Qué representan los elementos clave?\n\nCentroide: Es el centro geométrico o el “punto de equilibrio” de masa/intensidad de la célula dentro de su Región de Análisis (ROA).\nPíxeles: Los puntos que componen la imagen digital de la célula (tanto los más brillantes como los de los bordes).\nMomento Radial: Mide, en promedio, qué tan lejos o cerca están esos píxeles del centroide.\n\n¿Cómo se interpreta en la práctica?\n\nValor alto de momento radial: Significa que una gran parte de los píxeles o la intensidad de la señal se encuentran distribuidos hacia la periferia, indicando una célula más difusa, grande o extendida.\nValor bajo de momento radial: Significa que los píxeles están muy concentrados cerca del centroide, lo que refleja una célula más compacta, pequeña o densa.\n\n *Imagen realizada con Gemini 3.5 Flash-Lite."
+  },
+  {
+    "objectID": "blog/ciclo.html#sondas-tintes-empleadas-en-el-análisis-del-ciclo-celular-por-cf",
+    "href": "blog/ciclo.html#sondas-tintes-empleadas-en-el-análisis-del-ciclo-celular-por-cf",
+    "title": "CICLO CELULAR",
+    "section": "SONDAS / TINTES EMPLEADAS EN EL ANÁLISIS DEL CICLO CELULAR POR CF",
+    "text": "SONDAS / TINTES EMPLEADAS EN EL ANÁLISIS DEL CICLO CELULAR POR CF\n\n\n\nDAPI\n\n\n\n\n\n7-AAD\n\n\n\n\n\nIP\n\n\nEl IP tiñe todo el ácido nucleico de la célula de forma estequiométrica."
+  },
+  {
+    "objectID": "blog/ciclo.html#tinción---ioduro-de-propidio",
+    "href": "blog/ciclo.html#tinción---ioduro-de-propidio",
+    "title": "CICLO CELULAR",
+    "section": "TINCIÓN - IODURO DE PROPIDIO",
+    "text": "TINCIÓN - IODURO DE PROPIDIO"
+  },
+  {
+    "objectID": "blog/ciclo.html#reactivos-necesarios",
+    "href": "blog/ciclo.html#reactivos-necesarios",
+    "title": "CICLO CELULAR",
+    "section": "REACTIVOS NECESARIOS",
+    "text": "REACTIVOS NECESARIOS\n\nEtanol al 70% (previamente enfriado a -20 ªC).\n\n\n\n\n\n\n\nNota\n\n\n\nPreparar con agua destilada, no con PBS, para evitar precipitación de sales.\n\n\n\nTampón fosfato salino (PBS).\nSolución RNasa A (100 g/mL o concentración equivalente según fabricante).\nSolución de Yoduro de Propidio (50 μg/mL comercial o diluida en PBS)."
+  },
+  {
+    "objectID": "blog/ciclo.html#protocolo",
+    "href": "blog/ciclo.html#protocolo",
+    "title": "CICLO CELULAR",
+    "section": "PROTOCOLO",
+    "text": "PROTOCOLO\n\nRecolectar las células en suspensión (o despegarlas suavemente con tripsina si son adherentes). Se recomienda un mínimo de 1 x 106 células por condición.\nCentrifugar a 300 x g por 5 minutos y decantar el sobrenadante.\nLavar el botón celular resuspendiendo en 1 ml de PBS frío. Centrifugar nuevamente a 300 x g por 5 minutos y decantar.\nResuspender el botón celular residual en el PBS remanente (aprox. 100 μl) dándole unos toques suaves al tubo.\nAñadir 1 mL de Etanol al 70% frío (-20 °C) gota a gota mientras se agita el tubo continuamente en un vórtex a velocidad baja.\n\n\n\n\n\n\n\nAdvertencia\n\n\n\nEsto es fundamental para fijar las células de manera individual y prevenir la formación de agregados moleculares (clumping).\n\n\n\nIncubar a 4 °C durante al menos 30 minutos.\n\n\n\n\n\n\n\nNota\n\n\n\nLas muestras fijadas en este punto se pueden almacenar a -20 °C durante semanas antes de su lectura.\n\n\n\nCentrifugar las células fijadas a una velocidad ligeramente mayor (500 g por 5-10 minutos) debido a que las células fijadas en etanol son menos densas. Descartar el etanol con cuidado.\nLavar dos veces agregando 2 mL de PBS, centrifugando en cada paso a 500 x g por 5 minutos.\nResuspender el botón celular en 500 μl de PBS que contenga ARNasa A (concentración final aproximada de 20 - 50 μg/ml).\nIncubar 15 minutos a 37 °C o 30 minutos a temperatura ambiente\n\n\n\n\n\n\n\nNota\n\n\n\nEl IP se une indicriminadamente tanto al ADN como ARN. La ARNasa degrada el ARN para asegurar que la fluorescencia provenga únicamente del ADN celular.\n\n\n\nAñadir Yoduro de Propidio a una concentración final de 50 μg/ml (o según las instrucciones de volumen del fabricante).\nMezclar suavemente por inversión e incubar durante 30 minutos a temperatura ambiente (preferentemente a 37 °C) en la oscuridad. El IP es fotosensible.\nNo lavar las células después de añadir el IP; las muestras deben ser leídas directamente con el colorante en la solución."
+  },
+  {
+    "objectID": "blog/ciclo.html#tinción---7-aad",
+    "href": "blog/ciclo.html#tinción---7-aad",
+    "title": "CICLO CELULAR",
+    "section": "TINCIÓN - 7-AAD",
+    "text": "TINCIÓN - 7-AAD"
+  },
+  {
+    "objectID": "blog/ciclo.html#reactivos-necesarios-1",
+    "href": "blog/ciclo.html#reactivos-necesarios-1",
+    "title": "CICLO CELULAR",
+    "section": "REACTIVOS NECESARIOS",
+    "text": "REACTIVOS NECESARIOS\n\nEtanol al 70% (previamente enfriado a -20 ªC).\n\n\n\n\n\n\n\nNota\n\n\n\nPreparar con agua destilada, no con PBS, para evitar precipitación de sales.\n\n\n\nTampón fosfato salino (PBS).\nSolución comercial de 7-AAD (típicamente a 1 mg/ml en DMSO).\nOpcional pero recomendado: ARNasa A. Aunque el 7-AAD tiene mucha mayor especificidad por el ADN que el IP, la digestión de ARN sigue siendo una buena práctica para obtener picos de fluorescencia extremadamente limpios (coeficientes de variación bajos)."
+  },
+  {
+    "objectID": "blog/ciclo.html#protocolo-1",
+    "href": "blog/ciclo.html#protocolo-1",
+    "title": "CICLO CELULAR",
+    "section": "PROTOCOLO",
+    "text": "PROTOCOLO\n\nRecolectar las células en suspensión (o despegarlas suavemente con tripsina si son adherentes). Se recomienda un mínimo de 1 x 106 células por condición.\nCentrifugar a 300 x g por 5 minutos y decantar el sobrenadante.\nLavar el botón celular resuspendiendo en 1 ml de PBS frío. Centrifugar nuevamente a 300 x g por 5 minutos y decantar.\nResuspender el botón celular residual en el PBS remanente (aprox. 100 μl) dándole unos toques suaves al tubo.\nAñadir 1 mL de Etanol al 70% frío (-20 °C) gota a gota mientras se agita el tubo continuamente en un vórtex a velocidad baja.\n\n\n\n\n\n\n\nAdvertencia\n\n\n\nEsto es fundamental para fijar las células de manera individual y prevenir la formación de agregados moleculares (clumping).\n\n\n\nIncubar a 4 °C durante al menos 30 minutos.\n\n\n\n\n\n\n\nNota\n\n\n\nLas muestras fijadas en este punto se pueden almacenar a -20 °C durante semanas antes de su lectura.\n\n\n\nCentrifugar las células fijadas a una velocidad ligeramente mayor (500 g por 5-10 minutos) debido a que las células fijadas en etanol son menos densas. Descartar el etanol con cuidado.\nLavar dos veces agregando 2 mL de PBS, centrifugando en cada paso a 500 x g por 5 minutos.\nResuspender el botón celular en 500 μl de PBS que contenga ARNasa A (concentración final aproximada de 20 - 50 μg/ml).\nIncubar 15 minutos a 37 °C o 30 minutos a temperatura ambiente.\nAñadir 7-AAD a una concentración final de 10 a 25 μg/ml.\nMezclar suavemente por inversión.\nIncubar durante 20 a 30 minutos a temperatura ambiente en la oscuridad.\nNo lavar las células después de la tinción. Mantenerlas en hielo y en la oscuridad hasta su análisis en el citómetro."
+  },
+  {
+    "objectID": "blog/ciclo.html#tinción---dapi",
+    "href": "blog/ciclo.html#tinción---dapi",
+    "title": "CICLO CELULAR",
+    "section": "TINCIÓN - DAPI",
+    "text": "TINCIÓN - DAPI\nDAPI es altamente selectivo por el ADN (se une específicamente a regiones ricas en adenina y timina), lo que significa que no requiere el uso de RNAsa para degradar el ARN."
+  },
+  {
+    "objectID": "blog/ciclo.html#reactivos-necesarios-2",
+    "href": "blog/ciclo.html#reactivos-necesarios-2",
+    "title": "CICLO CELULAR",
+    "section": "REACTIVOS NECESARIOS",
+    "text": "REACTIVOS NECESARIOS\n\nEtanol al 70% (previamente enfriado a -20 ªC).\n\n\n\n\n\n\n\nNota\n\n\n\nPreparar con agua destilada, no con PBS, para evitar precipitación de sales.\n\n\n\nTampón fosfato salino (PBS).\nDAPI diluido en PBS a una concentración final de 1 a 5 μg/ml.\n\n\n\n\n\n\n\nTip\n\n\n\nOpcional pero recomendado\nTRITON X-100 al 0.1% (si usas PFA para permeabiliza la membrana).\n\n\n\nPROTOCOLO\n\nCentrifugar la suspensión celular (aprox. 1 x 106 células) a 300 - 500 g por 5 minutos y decantar el medio.\nLavar una vez resuspendiendo en 1 - 2 mL de PBS frío y volver a centrifugar.\nResuspender el botón celular en el remanente de PBS.\nFijar con etano: Agregar 1 mL de etanol al 70% helado gota a gota mientras agitas suavemente en vórtex. Incubar a -20 °C durante al menos 2 horas.\n\n\n\n\n\n\n\nImportante\n\n\n\nSi usas PFA al 2%, incubar por 15 minutos a tempertaura ambiente, centrifugar, y luego permeabilizar con Tritón X-100 al 0.1% en PBS por 10 minutos.\n\n\n\nCentrifugar a 500-800 g durante 5 minutos para sedimentar las células (especialmente si usaste etanol).\nLavar dos veces con etanol 2 mL de PBS frío para eliminar por completo el fijador.\nResuspender el botón celular final en 500 L de la solución de tinción DAPI (1 - 5 μg/mL).\nIncubar durante 15 a 30 minutos a temperatura ambiente protegidos de la luz.\n\n\n\n\n\n\n\nNota\n\n\n\nA diferencia del IP, no es necesario lavar el DPAI antes de la lectura; las células se pueden analizar directamente en esta solución.\n\n\nEl DAPI es semi-permeable a la membrana de células vivas, pero si se utiliza a una concentración más alta, puede ingresar a células viables sin necesidad de fijarlas.\n\nCosechar y lavar células vivas con PBS.\nResuspender en PBS que contenga 10 μg/mL de DAPI y Tritón X-100 al 0.1%.\nIncubar por 30 - 45 minutos a 37 °C en la oscuridad y pasar directamente al citómetro."
+  },
+  {
+    "objectID": "blog/ciclo.html#la-mente-creativa-detrás",
+    "href": "blog/ciclo.html#la-mente-creativa-detrás",
+    "title": "CICLO CELULAR",
+    "section": "LA MENTE CREATIVA DETRÁS",
+    "text": "LA MENTE CREATIVA DETRÁS\n\n\n\n\n\n\nJairo R. Villanueva-Toledo\nAl frente de esta entrada y el diseño de sus recursos.\n\n\n\n\n\nHecho con 💙 por Jairo"
+  },
+  {
+    "objectID": "guias/index.html",
+    "href": "guias/index.html",
+    "title": "TALLERES",
+    "section": "",
+    "text": "PrecauciónSECCIÓN EN DESARROLLO 🛠️\n\n\n\nEstamos calibrando los detectores y preparando contenidos de alta precisión para esta sección. Muy pronto estará disponible con todo el rigor metodológico que caracteriza a el CITOverso.\n\n\nAquí encontrarás recursos y material de apoyo para el desarrollo de talleres junto a nuestros colaboradores comerciales e institucionales.\n\n\nHecho con 💙 por CITOverso"
+  },
+  {
+    "objectID": "guias/ciclo.html",
+    "href": "guias/ciclo.html",
+    "title": "CICLO CELULAR",
+    "section": "",
+    "text": "El análisis del ciclo celular por citometría de flujo utilizando únicamente agentes intercaladores del AD (como el yoduro de propidio o el DAPI) permite responder a preguntas generales relacionadas con la distribución de las células en las distintas fases del ciclo y la cuantificación del contenido de ADN.\n *Video realizado con Gemini 3.5 Flash-Lite.\n\n¿Qué porcentaje de células se encuentran en cada fase del ciclo celular? Permite determinar la proporción exacta de poblaciones selulares en las fases G0/G1 (células con contenido de ADn diploide o 2N), la fase S (síntesis y rerplicación activa del ADN con contenidos intermedios) y las fases G2/M (células con contenido de ADN tetraploide o 4N).\n¿Existe alteración o bloqueo en la proliferación celular? Permite evaluar si un tratamiento (como fármacos, radiación o compuestos tóxicos) detiene el ciclo celular en un punto de control específico (por ejemplo, un bloqueo en la fase G2/M o S).\n¿Cuál es la fracción de células con contenido de ADN sub-diploide (apoptosis)? Facilita la identificación y cuantificación de picos o poblaciones con menor cantidad de ADN (sub-G1), lo cual es un marcador clásico de fragmentación del ADN asociadas a muerte celular programada o apoptosis.\n¿Se ha induciod poliploidía o aneuploidía? Permite detectar anomalías donde las células multiplican su dotación cromosómica más allá de lo normal (por ejemplo, células con contenidos de ADN de 8N o superiores, o picos aneuploides en líneas celulares tumorales).\n\n\n\nEl ciclo celular es un proceso altamente ordenado que resulta en la duplicación y transmisión de la información genética de una generación celular a la siguiente. Durante el proceso, el ADN debe replicarse con precisión y copias cromosómicas idénticas deben distribuirse a dos células hijas (1). El ciclo celular se divide en fases discretas: G1 (intervalo 1) es el intervalo o pausa entre la mitosis (fase M) y la síntesis de ADN (fase S). Durante la fase G1, la célula está sujeta a la estimulación de mitógenos extracelulares y factores de crecimiento; en respuesta a estos estímulos, la célula pasa a través de G1 y procede con la síntesis de ADN en la fase S; G2 (intervalo 2) es el intervalo entre la finalización de la síntesis de ADN (S) y la mitosis; la fase M se caracteriza por la generación de husos mitóticos bipolares, la segregación de cromátidas hermanas y la división celular (2).\n *Imagen realizada con Gemini 3.5 Flash-Lite."
+  },
+  {
+    "objectID": "guias/ciclo.html#citómetro-de-flujo",
+    "href": "guias/ciclo.html#citómetro-de-flujo",
+    "title": "CICLO CELULAR",
+    "section": "CITÓMETRO DE FLUJO",
+    "text": "CITÓMETRO DE FLUJO\n *Imagen realizada con Gemini 3.5 Flash-Lite."
+  },
+  {
+    "objectID": "guias/ciclo.html#canales-de-imagen",
+    "href": "guias/ciclo.html#canales-de-imagen",
+    "title": "CICLO CELULAR",
+    "section": "CANALES DE IMAGEN",
+    "text": "CANALES DE IMAGEN\n\nFSC\nSSC (Imaging)\nLight Loss (violeta): Pérdida de luz se puede medir a partir del láser violeta además del láser azul.\n\n\n\n\n\n\n\nImportante\n\n\n\nSolo se puede utilizar el láser azul para generar imágenes de pérdida de luz.\nEl láser violeta se puede utilizar para diferenciar el tamaño y sirve como alternativa a la dispersión frontal (forward scatter) para separar subpoblaciones clásicas de sangre total.\n\n\n\nLight Loss (Imaging): La pérdida de luz que genera imágenes se puede medir a partir del láser azul (de imágenes).\n\nA medida que las partículas (células) atraviesan el láser, la interacción de la luz con la partícula da como resultado una dispersión en todas direcciones.\nLa pérdida de luz es una medida de la luz (fotones) que se pierde del láser debido a la dispersión y la absorción de luz por parte de una partícula (célula).\nLas imágenes de pérdida de luz son similares a la microscopía de campo claro.\n\nImgB1 (535)\nImgB2 (600)\nImgB3 (790)"
+  },
+  {
+    "objectID": "guias/ciclo.html#parámetros-de-imagen",
+    "href": "guias/ciclo.html#parámetros-de-imagen",
+    "title": "CICLO CELULAR",
+    "section": "PARÁMETROS DE IMAGEN",
+    "text": "PARÁMETROS DE IMAGEN\n\nExcentricidad: Una relación entre el eje más corto y el eje más largo (momento) dentro de la región de análisis (ROA).\n\n\n\n\n\n\n\nNota\n\n\n\nEs un parámetro matemático o morfológico que describe que tan alargada o simétrica es una célula o partícula.\n\n\n¿Cómo se calcula?\nEl sistema toma el ROA de una célula y calcula sus eje principales:\n\nIdentifica el eje más largo (su longitud máxima).\nIdentifica el eje más corto (su ancho máximo o perpendicular al anterior).\nLa **excentricidad es la proporción (cociente) entre ambos (eje corto / eje largo).\n\n *Imagen realizada con Gemini 3.5 Flash-Lite.\n¿Cómo interpretarla en la práctica?\n\nCélula redonda (Linfocito o esfera perfecta): Con una forma casi circular, presenta una Excentricidad alta, cercana a 1.0.\nCélula ovalada (Monocito activado): Al estar moderadamente alargada, su valor de excentricidad desciende, situándose alrededor de 0.5 - 0.7.\nCélula filiforme/artefacto: Al ser muy alargada y delgada, su valor de excentricidad es muy baja, indicando una alta asimetría, con un valor cercano a 0.1 - 0.3.\n\nMOMENTO RADIAL: La distancia promedio de los píxeles desde el centroide dentro de la Región de Análisis.\nEste parámetro describe la distribución espacial de los píxeles en relación con el centro de la célula.\n¿Qué representan los elementos clave?\n\nCentroide: Es el centro geométrico o el “punto de equilibrio” de masa/intensidad de la célula dentro de su Región de Análisis (ROA).\nPíxeles: Los puntos que componen la imagen digital de la célula (tanto los más brillantes como los de los bordes).\nMomento Radial: Mide, en promedio, qué tan lejos o cerca están esos píxeles del centroide.\n\n¿Cómo se interpreta en la práctica?\n\nValor alto de momento radial: Significa que una gran parte de los píxeles o la intensidad de la señal se encuentran distribuidos hacia la periferia, indicando una célula más difusa, grande o extendida.\nValor bajo de momento radial: Significa que los píxeles están muy concentrados cerca del centroide, lo que refleja una célula más compacta, pequeña o densa.\n\n *Imagen realizada con Gemini 3.5 Flash-Lite."
+  },
+  {
+    "objectID": "guias/ciclo.html#sondas-tintes-empleadas-en-el-análisis-del-ciclo-celular-por-cf",
+    "href": "guias/ciclo.html#sondas-tintes-empleadas-en-el-análisis-del-ciclo-celular-por-cf",
+    "title": "CICLO CELULAR",
+    "section": "SONDAS / TINTES EMPLEADAS EN EL ANÁLISIS DEL CICLO CELULAR POR CF",
+    "text": "SONDAS / TINTES EMPLEADAS EN EL ANÁLISIS DEL CICLO CELULAR POR CF\n\n\n\nDAPI\n\n\n\n\n\n7-AAD\n\n\n\n\n\nIP\n\n\nEl IP tiñe todo el ácido nucleico de la célula de forma estequiométrica."
+  },
+  {
+    "objectID": "guias/ciclo.html#tinción---ioduro-de-propidio",
+    "href": "guias/ciclo.html#tinción---ioduro-de-propidio",
+    "title": "CICLO CELULAR",
+    "section": "TINCIÓN - IODURO DE PROPIDIO",
+    "text": "TINCIÓN - IODURO DE PROPIDIO"
+  },
+  {
+    "objectID": "guias/ciclo.html#reactivos-necesarios",
+    "href": "guias/ciclo.html#reactivos-necesarios",
+    "title": "CICLO CELULAR",
+    "section": "REACTIVOS NECESARIOS",
+    "text": "REACTIVOS NECESARIOS\n\nEtanol al 70% (previamente enfriado a -20 ªC).\n\n\n\n\n\n\n\nNota\n\n\n\nPreparar con agua destilada, no con PBS, para evitar precipitación de sales.\n\n\n\nTampón fosfato salino (PBS).\nSolución RNasa A (100 g/mL o concentración equivalente según fabricante).\nSolución de Yoduro de Propidio (50 μg/mL comercial o diluida en PBS)."
+  },
+  {
+    "objectID": "guias/ciclo.html#protocolo",
+    "href": "guias/ciclo.html#protocolo",
+    "title": "CICLO CELULAR",
+    "section": "PROTOCOLO",
+    "text": "PROTOCOLO\n\nRecolectar las células en suspensión (o despegarlas suavemente con tripsina si son adherentes). Se recomienda un mínimo de 1 x 106 células por condición.\nCentrifugar a 300 x g por 5 minutos y decantar el sobrenadante.\nLavar el botón celular resuspendiendo en 1 ml de PBS frío. Centrifugar nuevamente a 300 x g por 5 minutos y decantar.\nResuspender el botón celular residual en el PBS remanente (aprox. 100 μl) dándole unos toques suaves al tubo.\nAñadir 1 mL de Etanol al 70% frío (-20 °C) gota a gota mientras se agita el tubo continuamente en un vórtex a velocidad baja.\n\n\n\n\n\n\n\nAdvertencia\n\n\n\nEsto es fundamental para fijar las células de manera individual y prevenir la formación de agregados moleculares (clumping).\n\n\n\nIncubar a 4 °C durante al menos 30 minutos.\n\n\n\n\n\n\n\nNota\n\n\n\nLas muestras fijadas en este punto se pueden almacenar a -20 °C durante semanas antes de su lectura.\n\n\n\nCentrifugar las células fijadas a una velocidad ligeramente mayor (500 g por 5-10 minutos) debido a que las células fijadas en etanol son menos densas. Descartar el etanol con cuidado.\nLavar dos veces agregando 2 mL de PBS, centrifugando en cada paso a 500 x g por 5 minutos.\nResuspender el botón celular en 500 μl de PBS que contenga ARNasa A (concentración final aproximada de 20 - 50 μg/ml).\nIncubar 15 minutos a 37 °C o 30 minutos a temperatura ambiente\n\n\n\n\n\n\n\nNota\n\n\n\nEl IP se une indicriminadamente tanto al ADN como ARN. La ARNasa degrada el ARN para asegurar que la fluorescencia provenga únicamente del ADN celular.\n\n\n\nAñadir Yoduro de Propidio a una concentración final de 50 μg/ml (o según las instrucciones de volumen del fabricante).\nMezclar suavemente por inversión e incubar durante 30 minutos a temperatura ambiente (preferentemente a 37 °C) en la oscuridad. El IP es fotosensible.\nNo lavar las células después de añadir el IP; las muestras deben ser leídas directamente con el colorante en la solución."
+  },
+  {
+    "objectID": "guias/ciclo.html#tinción---7-aad",
+    "href": "guias/ciclo.html#tinción---7-aad",
+    "title": "CICLO CELULAR",
+    "section": "TINCIÓN - 7-AAD",
+    "text": "TINCIÓN - 7-AAD"
+  },
+  {
+    "objectID": "guias/ciclo.html#reactivos-necesarios-1",
+    "href": "guias/ciclo.html#reactivos-necesarios-1",
+    "title": "CICLO CELULAR",
+    "section": "REACTIVOS NECESARIOS",
+    "text": "REACTIVOS NECESARIOS\n\nEtanol al 70% (previamente enfriado a -20 ªC).\n\n\n\n\n\n\n\nNota\n\n\n\nPreparar con agua destilada, no con PBS, para evitar precipitación de sales.\n\n\n\nTampón fosfato salino (PBS).\nSolución comercial de 7-AAD (típicamente a 1 mg/ml en DMSO).\nOpcional pero recomendado: ARNasa A. Aunque el 7-AAD tiene mucha mayor especificidad por el ADN que el IP, la digestión de ARN sigue siendo una buena práctica para obtener picos de fluorescencia extremadamente limpios (coeficientes de variación bajos)."
+  },
+  {
+    "objectID": "guias/ciclo.html#protocolo-1",
+    "href": "guias/ciclo.html#protocolo-1",
+    "title": "CICLO CELULAR",
+    "section": "PROTOCOLO",
+    "text": "PROTOCOLO\n\nRecolectar las células en suspensión (o despegarlas suavemente con tripsina si son adherentes). Se recomienda un mínimo de 1 x 106 células por condición.\nCentrifugar a 300 x g por 5 minutos y decantar el sobrenadante.\nLavar el botón celular resuspendiendo en 1 ml de PBS frío. Centrifugar nuevamente a 300 x g por 5 minutos y decantar.\nResuspender el botón celular residual en el PBS remanente (aprox. 100 μl) dándole unos toques suaves al tubo.\nAñadir 1 mL de Etanol al 70% frío (-20 °C) gota a gota mientras se agita el tubo continuamente en un vórtex a velocidad baja.\n\n\n\n\n\n\n\nAdvertencia\n\n\n\nEsto es fundamental para fijar las células de manera individual y prevenir la formación de agregados moleculares (clumping).\n\n\n\nIncubar a 4 °C durante al menos 30 minutos.\n\n\n\n\n\n\n\nNota\n\n\n\nLas muestras fijadas en este punto se pueden almacenar a -20 °C durante semanas antes de su lectura.\n\n\n\nCentrifugar las células fijadas a una velocidad ligeramente mayor (500 g por 5-10 minutos) debido a que las células fijadas en etanol son menos densas. Descartar el etanol con cuidado.\nLavar dos veces agregando 2 mL de PBS, centrifugando en cada paso a 500 x g por 5 minutos.\nResuspender el botón celular en 500 μl de PBS que contenga ARNasa A (concentración final aproximada de 20 - 50 μg/ml).\nIncubar 15 minutos a 37 °C o 30 minutos a temperatura ambiente.\nAñadir 7-AAD a una concentración final de 10 a 25 μg/ml.\nMezclar suavemente por inversión.\nIncubar durante 20 a 30 minutos a temperatura ambiente en la oscuridad.\nNo lavar las células después de la tinción. Mantenerlas en hielo y en la oscuridad hasta su análisis en el citómetro."
+  },
+  {
+    "objectID": "guias/ciclo.html#tinción---dapi",
+    "href": "guias/ciclo.html#tinción---dapi",
+    "title": "CICLO CELULAR",
+    "section": "TINCIÓN - DAPI",
+    "text": "TINCIÓN - DAPI\nDAPI es altamente selectivo por el ADN (se une específicamente a regiones ricas en adenina y timina), lo que significa que no requiere el uso de RNAsa para degradar el ARN."
+  },
+  {
+    "objectID": "guias/ciclo.html#reactivos-necesarios-2",
+    "href": "guias/ciclo.html#reactivos-necesarios-2",
+    "title": "CICLO CELULAR",
+    "section": "REACTIVOS NECESARIOS",
+    "text": "REACTIVOS NECESARIOS\n\nEtanol al 70% (previamente enfriado a -20 ªC).\n\n\n\n\n\n\n\nNota\n\n\n\nPreparar con agua destilada, no con PBS, para evitar precipitación de sales.\n\n\n\nTampón fosfato salino (PBS).\nDAPI diluido en PBS a una concentración final de 1 a 5 μg/ml.\n\n\n\n\n\n\n\nTip\n\n\n\nOpcional pero recomendado\nTRITON X-100 al 0.1% (si usas PFA para permeabiliza la membrana).\n\n\n\nPROTOCOLO\n\nCentrifugar la suspensión celular (aprox. 1 x 106 células) a 300 - 500 g por 5 minutos y decantar el medio.\nLavar una vez resuspendiendo en 1 - 2 mL de PBS frío y volver a centrifugar.\nResuspender el botón celular en el remanente de PBS.\nFijar con etano: Agregar 1 mL de etanol al 70% helado gota a gota mientras agitas suavemente en vórtex. Incubar a -20 °C durante al menos 2 horas.\n\n\n\n\n\n\n\nImportante\n\n\n\nSi usas PFA al 2%, incubar por 15 minutos a tempertaura ambiente, centrifugar, y luego permeabilizar con Tritón X-100 al 0.1% en PBS por 10 minutos.\n\n\n\nCentrifugar a 500-800 g durante 5 minutos para sedimentar las células (especialmente si usaste etanol).\nLavar dos veces con etanol 2 mL de PBS frío para eliminar por completo el fijador.\nResuspender el botón celular final en 500 L de la solución de tinción DAPI (1 - 5 μg/mL).\nIncubar durante 15 a 30 minutos a temperatura ambiente protegidos de la luz.\n\n\n\n\n\n\n\nNota\n\n\n\nA diferencia del IP, no es necesario lavar el DPAI antes de la lectura; las células se pueden analizar directamente en esta solución.\n\n\nEl DAPI es semi-permeable a la membrana de células vivas, pero si se utiliza a una concentración más alta, puede ingresar a células viables sin necesidad de fijarlas.\n\nCosechar y lavar células vivas con PBS.\nResuspender en PBS que contenga 10 μg/mL de DAPI y Tritón X-100 al 0.1%.\nIncubar por 30 - 45 minutos a 37 °C en la oscuridad y pasar directamente al citómetro."
+  },
+  {
+    "objectID": "guias/ciclo.html#la-mente-creativa-detrás",
+    "href": "guias/ciclo.html#la-mente-creativa-detrás",
+    "title": "CICLO CELULAR",
+    "section": "LA MENTE CREATIVA DETRÁS",
+    "text": "LA MENTE CREATIVA DETRÁS\n\n\n\n\n\n\nJairo R. Villanueva-Toledo\nAl frente de esta entrada y el diseño de sus recursos.\n\n\n\n\n\nHecho con 💙 por Jairo"
+  },
+  {
+    "objectID": "guias/ciclo.html#bases-del-ciclo-celular",
+    "href": "guias/ciclo.html#bases-del-ciclo-celular",
+    "title": "CICLO CELULAR",
+    "section": "",
+    "text": "El ciclo celular es un proceso altamente ordenado que resulta en la duplicación y transmisión de la información genética de una generación celular a la siguiente. Durante el proceso, el ADN debe replicarse con precisión y copias cromosómicas idénticas deben distribuirse a dos células hijas (1). El ciclo celular se divide en fases discretas: G1 (intervalo 1) es el intervalo o pausa entre la mitosis (fase M) y la síntesis de ADN (fase S). Durante la fase G1, la célula está sujeta a la estimulación de mitógenos extracelulares y factores de crecimiento; en respuesta a estos estímulos, la célula pasa a través de G1 y procede con la síntesis de ADN en la fase S; G2 (intervalo 2) es el intervalo entre la finalización de la síntesis de ADN (S) y la mitosis; la fase M se caracteriza por la generación de husos mitóticos bipolares, la segregación de cromátidas hermanas y la división celular (2).\n *Imagen realizada con Gemini 3.5 Flash-Lite."
   }
 ]
