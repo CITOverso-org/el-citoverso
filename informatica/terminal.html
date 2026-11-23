@@ -2,22 +2,24 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.10.20">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
-<meta name="author" content="El CITOverso">
-<meta name="description" content="Una guía rápida para evitar artefactos en paneles multicolores.">
+<meta name="description" content="Intérpretes de línea de comandos: Windows PowerShell, PowerShell y Bash al descubierto">
 
-<title>Cómo optimizar compensaciones complejas en R – CITOverso</title>
+<title>Anatomía de la terminal – CITOverso</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -41,10 +43,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-17888a1159294d3eb470f19f6f52f5a5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9b8ae573420e97dc3ac434d523853471.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-591b674187a1bff42e222f34246c8358.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -107,17 +109,10 @@ ul.task-list li input[type="checkbox"] {
     <a class="nav-link" href="../cursos/cursos.html"> 
 <span class="menu-text">Cursos</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guías" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Guías</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-guías">    
-        <li>
-    <a class="dropdown-item" href="../guias/ciclo.html">
- <span class="dropdown-text">Ciclo celular</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../informatica/index.html"> 
+<span class="menu-text">Informática</span></a>
   </li>  
-    </ul>
-  </li>
   <li class="nav-item">
     <a class="nav-link" href="../blog/index.html"> 
 <span class="menu-text">Blog</span></a>
@@ -127,10 +122,6 @@ ul.task-list li input[type="checkbox"] {
  <span class="menu-text">Recursos</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-recursos">    
-        <li>
-    <a class="dropdown-item" href="../recursos/preparacion_entorno.html">
- <span class="dropdown-text">Preparación del entorno</span></a>
-  </li>  
         <li>
     <a class="dropdown-item" href="../recursos/cuaderno-interactivo.html">
  <span class="dropdown-text">Cuaderno interactivo</span></a>
@@ -170,7 +161,9 @@ ul.task-list li input[type="checkbox"] {
     <h2 id="toc-title">En esta página</h2>
    
   <ul>
-  <li><a href="#la-mente-creativa-al-frente-de-esta-entrada" id="toc-la-mente-creativa-al-frente-de-esta-entrada" class="nav-link active" data-scroll-target="#la-mente-creativa-al-frente-de-esta-entrada">LA MENTE CREATIVA AL FRENTE DE ESTA ENTRADA</a></li>
+  <li><a href="#windows-powershell-el-clásico-del-ecosistema-microsoft" id="toc-windows-powershell-el-clásico-del-ecosistema-microsoft" class="nav-link active" data-scroll-target="#windows-powershell-el-clásico-del-ecosistema-microsoft"><strong>Windows PowerShell</strong>: El clásico del ecosistema Microsoft</a></li>
+  <li><a href="#powershell-powershell-core-powershell-7-la-evolución-multiplataforma" id="toc-powershell-powershell-core-powershell-7-la-evolución-multiplataforma" class="nav-link" data-scroll-target="#powershell-powershell-core-powershell-7-la-evolución-multiplataforma"><strong>PowerShell</strong> (PowerShell Core / PowerShell 7+): La evolución multiplataforma</a></li>
+  <li><a href="#bash-bourne-again-shell-el-estándar-de-la-filosofía-unix" id="toc-bash-bourne-again-shell-el-estándar-de-la-filosofía-unix" class="nav-link" data-scroll-target="#bash-bourne-again-shell-el-estándar-de-la-filosofía-unix"><strong><em>Bash</em></strong> (Bourne Again Shell): El estándar de la filosofía Unix</a></li>
   </ul>
 </nav>
     </div>
@@ -179,36 +172,19 @@ ul.task-list li input[type="checkbox"] {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">Cómo optimizar compensaciones complejas en R</h1>
-  <div class="quarto-categories">
-    <div class="quarto-category">R</div>
-    <div class="quarto-category">Compensación</div>
-    <div class="quarto-category">Tutoriales</div>
-  </div>
-  </div>
+<h1 class="title">Anatomía de la terminal</h1>
+</div>
 
 <div>
   <div class="description">
-    Una guía rápida para evitar artefactos en paneles multicolores.
+    Intérpretes de línea de comandos: Windows PowerShell, PowerShell y Bash al descubierto
   </div>
 </div>
 
 
 <div class="quarto-title-meta">
 
-    <div>
-    <div class="quarto-title-meta-heading">Autor</div>
-    <div class="quarto-title-meta-contents">
-             <p>El CITOverso </p>
-          </div>
-  </div>
     
-    <div>
-    <div class="quarto-title-meta-heading">Fecha de publicación</div>
-    <div class="quarto-title-meta-contents">
-      <p class="date">6 de junio de 2026</p>
-    </div>
-  </div>
   
     
   </div>
@@ -218,18 +194,83 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<section id="la-mente-creativa-al-frente-de-esta-entrada" class="level2">
-<h2 class="anchored" data-anchor-id="la-mente-creativa-al-frente-de-esta-entrada">LA MENTE CREATIVA AL FRENTE DE ESTA ENTRADA</h2>
-<div class="callout callout-style-simple callout-note no-icon">
-<div class="callout-body d-flex">
-<div class="callout-icon-container">
-<i class="callout-icon no-icon"></i>
-</div>
-<div class="callout-body-container">
-<p><strong><a href="https://github.com/jvillanuevatoledo">Jairo R. Villanueva-Toledo</a></strong></p>
-</div>
-</div>
-</div>
+<p>Interactuar con el sistema operativo mediante instrucciones de texto y automatizar tareas repetitivas con <em>scripts</em> son habilidades esenciales en el desarrollo de software, la administración de sistemas y la ciencia de datos. Detrás de cada terminal que abres se encuentra un intérprete de línea de comandos —conocido como <strong><em>shell</em></strong>, encargado de traducir tus órdenes en acciones concretas.</p>
+<p>Aunque <strong>Windows PowerShell</strong>, <strong>PowerShell</strong> (multiplataforma) y <strong>Bash</strong> comparten este propósito fundamental, sus arquitecturas, alcances y filosofías de diseño responden a historias muy distintas. Conocer sus diferencias te permitirá elegir la herramienta adecuada para cada entorno de trabajo.</p>
+<section id="windows-powershell-el-clásico-del-ecosistema-microsoft" class="level2">
+<h2 class="anchored" data-anchor-id="windows-powershell-el-clásico-del-ecosistema-microsoft"><strong>Windows PowerShell</strong>: El clásico del ecosistema Microsoft</h2>
+<p>Windows PowerShell es la versión original del entorno de línea de comandos y lenguaje de scripting desarrollado por Microsoft exclusivamente para sistemas operativos Windows.</p>
+<ul>
+<li><p>Está construido sobre .NET Framework, lo que lo vincula de forma exclusiva al entorno Windows. Su desarrollo se detuvo en la versión 5.1, la cual sigue viniendo preinstalada de fábrica en Windows 10 y Windows 11 para garantizar compatibilidad con scripts heredados.</p></li>
+<li><p>A diferencia de las terminales tradicionales que procesan texto plano, Windows PowerShell trabaja directamente con objetos .NET. Al ejecutar un comando —denominado <code>cmdlet</code>, como <code>Get-Process</code> o <code>Get-ChildItem—</code>, la salida no es una simple cadena de caracteres, sino una estructura de datos completa con propiedades y métodos que pueden filtrarse, ordenarse y manipularse sin necesidad de analizar texto manualmente.</p></li>
+</ul>
+</section>
+<section id="powershell-powershell-core-powershell-7-la-evolución-multiplataforma" class="level2">
+<h2 class="anchored" data-anchor-id="powershell-powershell-core-powershell-7-la-evolución-multiplataforma"><strong>PowerShell</strong> (PowerShell Core / PowerShell 7+): La evolución multiplataforma</h2>
+<p>Conocido hoy simplemente como PowerShell, representa la evolución moderna, de código abierto y multiplataforma que sucede al clásico Windows PowerShell.</p>
+<ul>
+<li><p>Al apoyarse en .NET (anteriormente .NET Core), puede ejecutarse de forma nativa no solo en Windows, sino también en macOS y Linux, unificando la automatización en infraestructuras híbridas.</p></li>
+<li><p>Mientras que Windows PowerShell permanece en modo de mantenimiento sin nuevas características, PowerShell 7+ se instala de manera independiente y recibe actualizaciones constantes de rendimiento y seguridad.</p></li>
+<li><p>Mantiene la filosofía orientada a objetos y gran parte de la compatibilidad con los módulos clásicos, pero incorpora mejoras notables en velocidad, ejecución paralela en bucles y soporte nativo para formatos y protocolos web actuales, como JSON y APIs REST.</p></li>
+</ul>
+</section>
+<section id="bash-bourne-again-shell-el-estándar-de-la-filosofía-unix" class="level2">
+<h2 class="anchored" data-anchor-id="bash-bourne-again-shell-el-estándar-de-la-filosofía-unix"><strong><em>Bash</em></strong> (Bourne Again Shell): El estándar de la filosofía Unix</h2>
+<p>Bash es el intérprete de comandos por excelencia en sistemas operativos tipo Unix, incluyendo las principales distribuciones de Linux (Ubuntu, Debian, Fedora, entre otras) y, durante muchos años, macOS (donde hoy convive con Zsh).</p>
+<ul>
+<li><p>A diferencia de PowerShell, Bash sigue la filosofía clásica de Unix: “todo es un archivo y todo se comunica mediante flujos de texto plano”. Herramientas pequeñas y altamente especializadas (<code>ls</code>, <code>grep</code>, <code>awk</code>, <code>sed</code>, <code>cat</code>) se encadenan mediante tuberías (<code>|</code>), pasando el texto de salida de un programa como entrada del siguiente.</p></li>
+<li><p>Privilegia comandos breves y directos (mkdir, rm -rf, cd, which) frente a la estructura descriptiva Verbo-Sustantivo característica de PowerShell.</p></li>
+<li><p>Aunque Windows no lo incluye de fábrica, los desarrolladores suelen utilizarlo mediante Git Bash —un entorno ligero incluido con Git for Windows que emula utilidades esenciales de Linux como nano, grep y ssh— o a través de WSL (Windows Subsystem for Linux), que permite ejecutar un núcleo real de Linux directamente dentro de Windows.</p></li>
+</ul>
+<table class="caption-top table">
+<caption>Comparativa general</caption>
+<colgroup>
+<col style="width: 25%">
+<col style="width: 34%">
+<col style="width: 29%">
+<col style="width: 10%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Característica</th>
+<th>Windows PowerShell</th>
+<th>PowerShell (7+)</th>
+<th>Bash</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Disponibilidad</td>
+<td>Solo Windows (preinstalada)</td>
+<td>Multiplataforma (Windows, macOS, Linux)</td>
+<td>Linux, macOS (y windows via GitBash/WSL)</td>
+</tr>
+<tr class="even">
+<td>Base tecnológica</td>
+<td>.NET Framework (cerrado)</td>
+<td>.NET moderno (código abierto)</td>
+<td>C/ Estándar POSIX (código abierto)</td>
+</tr>
+<tr class="odd">
+<td>Manejo de datos</td>
+<td>Objetos estructurados</td>
+<td>Objetos estructurados</td>
+<td>Flujos de texto plano</td>
+</tr>
+<tr class="even">
+<td>Estilo de comandos</td>
+<td>Verbo-Sustantivo (Get-Content)</td>
+<td>Verbo-Sustantivo (Get-Content)</td>
+<td>Comandos cortos (<code>cat</code>, <code>grep</code>, <code>ls</code>)</td>
+</tr>
+<tr class="odd">
+<td>Estado actual</td>
+<td>En mantenimiento (v5.1)</td>
+<td>Desarrollo activo</td>
+<td>Desarrollo activo</td>
+</tr>
+</tbody>
+</table>
+<p>En la práctica, elegir entre estas herramientas ya no implica quedar atrapado en un solo sistema operativo. Si administras entornos Windows o necesitas manipular estructuras de datos complejas sin lidiar con expresiones regulares para extraer texto, PowerShell 7+ ofrece una sintaxis consistente y moderna. Por otro lado, si tu flujo de trabajo gira en torno a servidores Linux, contenedores o pipelines bioinformáticos y de desarrollo ágil, Bash sigue siendo el lenguaje común indispensable.</p>
 <div style="text-align: center; margin-top: 3rem; color: #6c757d; font-size: 0.9rem;">
 <p>Hecho con 💙 por CITOverso</p>
 </div>

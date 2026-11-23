@@ -2,7 +2,7 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.10.20">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
@@ -12,10 +12,13 @@
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -41,10 +44,10 @@ ul.task-list li input[type="checkbox"] {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-17888a1159294d3eb470f19f6f52f5a5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9b8ae573420e97dc3ac434d523853471.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-591b674187a1bff42e222f34246c8358.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script id="quarto-search-options" type="application/json">{
   "location": "navbar",
   "copy-button": false,
@@ -104,7 +107,7 @@ ul.task-list li input[type="checkbox"] {
 <style>html{ scroll-behavior: smooth; }</style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -165,17 +168,10 @@ window.Quarto = {
     <a class="nav-link" href="../cursos/cursos.html"> 
 <span class="menu-text">Cursos</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guías" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Guías</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-guías">    
-        <li>
-    <a class="dropdown-item" href="../guias/ciclo.html">
- <span class="dropdown-text">Ciclo celular</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../informatica/index.html"> 
+<span class="menu-text">Informática</span></a>
   </li>  
-    </ul>
-  </li>
   <li class="nav-item">
     <a class="nav-link active" href="../blog/index.html" aria-current="page"> 
 <span class="menu-text">Blog</span></a>
@@ -185,10 +181,6 @@ window.Quarto = {
  <span class="menu-text">Recursos</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-recursos">    
-        <li>
-    <a class="dropdown-item" href="../recursos/preparacion_entorno.html">
- <span class="dropdown-text">Preparación del entorno</span></a>
-  </li>  
         <li>
     <a class="dropdown-item" href="../recursos/cuaderno-interactivo.html">
  <span class="dropdown-text">Cuaderno interactivo</span></a>
@@ -225,7 +217,7 @@ window.Quarto = {
 <!-- margin-sidebar -->
     <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
         
-    <h5 class="quarto-listing-category-title">Categorías</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">Todas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q29tcGVuc2FjaSVDMyVCM24=">Compensación <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Ug==">R <span class="quarto-category-count">(1)</span></div><div class="category" data-category="VHV0b3JpYWxlcw==">Tutoriales <span class="quarto-category-count">(1)</span></div></div></div>
+    <h5 class="quarto-listing-category-title">Categorías</h5><div class="quarto-listing-category category-default"><div class="category" data-category="">Todas <span class="quarto-category-count">(1)</span></div><div class="category" data-category="Q2ljbG8lMjBjZWx1bGFy">Ciclo celular <span class="quarto-category-count">(1)</span></div><div class="category" data-category="RnVuZGFtZW50b3M=">Fundamentos <span class="quarto-category-count">(1)</span></div><div class="category" data-category="TWV0b2RvbG9nJUMzJUFEYQ==">Metodología <span class="quarto-category-count">(1)</span></div></div></div>
 <!-- main -->
 <main class="content column-page-left" id="quarto-document-content">
 
@@ -255,31 +247,31 @@ window.Quarto = {
 
 <div class="quarto-listing quarto-listing-container-default" id="listing-listing">
 <div class="list quarto-listing-default">
-<div class="quarto-post image-right" data-index="0" data-categories="UiUyQ0NvbXBlbnNhY2klQzMlQjNuJTJDVHV0b3JpYWxlcw==" data-listing-date-sort="1780725600000" data-listing-file-modified-sort="1793377719084" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="1" data-listing-word-count-sort="22">
-<div class="thumbnail"><a href="../blog/nota1.html" class="no-external">
+<div class="quarto-post image-right" data-index="0" data-categories="Q2ljbG8lMjBjZWx1bGFyJTJDRnVuZGFtZW50b3MlMkNNZXRvZG9sb2clQzMlQURh" data-listing-date-sort="1780725600000" data-listing-file-modified-sort="1795465097329" data-listing-date-modified-sort="NaN" data-listing-reading-time-sort="11" data-listing-word-count-sort="2029">
+<div class="thumbnail"><a href="../blog/ciclo.html" class="no-external">
 
-<div class="listing-item-img-placeholder card-img-top" >&nbsp;</div>
+<p class="card-img-top"><img loading='lazy' src="..\imagenes\ciclo\fig_1.jpg" alt="Ciclo celular."  class="thumbnail-image card-img"/></p>
 
 </a></div>
 <div class="body">
 <h3 class="no-anchor listing-title">
-<a href="../blog/nota1.html" class="no-external">Cómo optimizar compensaciones complejas en R</a>
+<a href="../blog/ciclo.html" class="no-external">Ciclo celular</a>
 </h3>
 <div class="listing-categories">
 
-<div class="listing-category" onclick="window.quartoListingCategory('Ug=='); return false;">R</div>
+<div class="listing-category" onclick="window.quartoListingCategory('Q2ljbG8lMjBjZWx1bGFy'); return false;">Ciclo celular</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('Q29tcGVuc2FjaSVDMyVCM24='); return false;">Compensación</div>
+<div class="listing-category" onclick="window.quartoListingCategory('RnVuZGFtZW50b3M='); return false;">Fundamentos</div>
 
-<div class="listing-category" onclick="window.quartoListingCategory('VHV0b3JpYWxlcw=='); return false;">Tutoriales</div>
+<div class="listing-category" onclick="window.quartoListingCategory('TWV0b2RvbG9nJUMzJUFEYQ=='); return false;">Metodología</div>
 
 </div>
-<div class="delink listing-description"><a href="../blog/nota1.html" class="no-external">
-<p>Una guía rápida para evitar artefactos en paneles multicolores.</p>
+<div class="delink listing-description"><a href="../blog/ciclo.html" class="no-external">
+<p>De la tinción con yoduro de propidio al histograma: fundamentos y claves metodológicas para estudiar el ciclo celular por citometría de flujo</p>
 </a></div>
 </div>
 <div class="metadata">
-<a href="../blog/nota1.html" class="no-external">
+<a href="../blog/ciclo.html" class="no-external">
 <div class="listing-date">
 6 jun 2026
 </div>

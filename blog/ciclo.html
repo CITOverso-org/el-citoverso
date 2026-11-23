@@ -2,22 +2,25 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="es" xml:lang="es"><head>
 
 <meta charset="utf-8">
-<meta name="generator" content="quarto-1.9.37">
+<meta name="generator" content="quarto-1.10.20">
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 <meta name="author" content="El CITOverso">
 <meta name="description" content="De la tinción con yoduro de propidio al histograma: fundamentos y claves metodológicas para estudiar el ciclo celular por citometría de flujo">
 
-<title>CICLO CELULAR – CITOverso</title>
+<title>Ciclo celular – CITOverso</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
 */
-code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
-div.columns{display: flex; gap: min(4vw, 1.5em);}
-div.column{flex: auto; overflow-x: auto;}
+div.columns{display: flex; gap: 1.5em;}
+div.column{flex: auto;}
+@media screen {
+div.columns{gap: min(4vw, 1.5em);}
+div.column{overflow-x: auto;}
+}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
@@ -60,10 +63,10 @@ div.csl-indent {
 <script src="../site_libs/quarto-html/tippy.umd.min.js"></script>
 <script src="../site_libs/quarto-html/anchor.min.js"></script>
 <link href="../site_libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="../site_libs/quarto-html/quarto-syntax-highlighting-7f8f88aac4f3542376d5c11b86a4c14d.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<link href="../site_libs/quarto-html/quarto-syntax-highlighting-17888a1159294d3eb470f19f6f52f5a5.css" rel="stylesheet" id="quarto-text-highlighting-styles">
 <script src="../site_libs/bootstrap/bootstrap.min.js"></script>
 <link href="../site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="../site_libs/bootstrap/bootstrap-9b8ae573420e97dc3ac434d523853471.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<link href="../site_libs/bootstrap/bootstrap-591b674187a1bff42e222f34246c8358.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
 <script src="../site_libs/quarto-contrib/videojs/video.min.js"></script>
 <link href="../site_libs/quarto-contrib/videojs/video-js.css" rel="stylesheet">
 <script id="quarto-search-options" type="application/json">{
@@ -96,7 +99,7 @@ div.csl-indent {
 <style>html{ scroll-behavior: smooth; }</style>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@4/tex-chtml.js" type="text/javascript"></script>
 
 <script type="text/javascript">
 const typesetMath = (el) => {
@@ -157,17 +160,10 @@ window.Quarto = {
     <a class="nav-link" href="../cursos/cursos.html"> 
 <span class="menu-text">Cursos</span></a>
   </li>  
-  <li class="nav-item dropdown ">
-    <a class="nav-link dropdown-toggle" href="#" id="nav-menu-guías" role="link" data-bs-toggle="dropdown" aria-expanded="false">
- <span class="menu-text">Guías</span>
-    </a>
-    <ul class="dropdown-menu" aria-labelledby="nav-menu-guías">    
-        <li>
-    <a class="dropdown-item" href="../guias/ciclo.html">
- <span class="dropdown-text">Ciclo celular</span></a>
+  <li class="nav-item">
+    <a class="nav-link" href="../informatica/index.html"> 
+<span class="menu-text">Informática</span></a>
   </li>  
-    </ul>
-  </li>
   <li class="nav-item">
     <a class="nav-link" href="../blog/index.html"> 
 <span class="menu-text">Blog</span></a>
@@ -177,10 +173,6 @@ window.Quarto = {
  <span class="menu-text">Recursos</span>
     </a>
     <ul class="dropdown-menu" aria-labelledby="nav-menu-recursos">    
-        <li>
-    <a class="dropdown-item" href="../recursos/preparacion_entorno.html">
- <span class="dropdown-text">Preparación del entorno</span></a>
-  </li>  
         <li>
     <a class="dropdown-item" href="../recursos/cuaderno-interactivo.html">
  <span class="dropdown-text">Cuaderno interactivo</span></a>
@@ -233,7 +225,7 @@ window.Quarto = {
   </ul></li>
   <li><a href="#metodología" id="toc-metodología" class="nav-link" data-scroll-target="#metodología">METODOLOGÍA</a>
   <ul class="collapse">
-  <li><a href="#tinción---ioduro-de-propidio" id="toc-tinción---ioduro-de-propidio" class="nav-link" data-scroll-target="#tinción---ioduro-de-propidio">TINCIÓN - IODURO DE PROPIDIO</a></li>
+  <li><a href="#tinción---yoduro-de-propidio" id="toc-tinción---yoduro-de-propidio" class="nav-link" data-scroll-target="#tinción---yoduro-de-propidio">TINCIÓN - YODURO DE PROPIDIO</a></li>
   <li><a href="#reactivos-necesarios" id="toc-reactivos-necesarios" class="nav-link" data-scroll-target="#reactivos-necesarios">REACTIVOS NECESARIOS</a></li>
   <li><a href="#protocolo" id="toc-protocolo" class="nav-link" data-scroll-target="#protocolo">PROTOCOLO</a></li>
   <li><a href="#tinción---7-aad" id="toc-tinción---7-aad" class="nav-link" data-scroll-target="#tinción---7-aad">TINCIÓN - 7-AAD</a></li>
@@ -253,8 +245,13 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
-<h1 class="title">CICLO CELULAR</h1>
-</div>
+<h1 class="title">Ciclo celular</h1>
+  <div class="quarto-categories">
+    <div class="quarto-category">Ciclo celular</div>
+    <div class="quarto-category">Fundamentos</div>
+    <div class="quarto-category">Metodología</div>
+  </div>
+  </div>
 
 <div>
   <div class="description">
@@ -294,12 +291,12 @@ window.Quarto = {
 <ul>
 <li><p>¿<strong>Qué porcentaje de células se encuentran en cada fase del ciclo celular</strong>? Permite determinar la proporción exacta de poblaciones selulares en las fases <em>G<sub>0</sub>/G<sub>1</sub></em> (células con contenido de ADn diploide o 2N), la fase <em>S</em> (síntesis y rerplicación activa del ADN con contenidos intermedios) y las fases <em>G<sub>2</sub>/M</em> (células con contenido de ADN tetraploide o 4N).</p></li>
 <li><p>¿<strong>Existe alteración o bloqueo en la proliferación celular</strong>? Permite evaluar si un tratamiento (como fármacos, radiación o compuestos tóxicos) detiene el ciclo celular en un punto de control específico (por ejemplo, un bloqueo en la fase <em>G<sub>2</sub>/M</em> o <em>S</em>).</p></li>
-<li><p>¿<strong>Cuál es la fracción de células con contenido de ADN sub-diploide (apoptosis)</strong>? Facilita la identificación y cuantificación de picos o poblaciones con menor cantidad de ADN (sub-G1), lo cual es un marcador clásico de fragmentación del ADN asociadas a muerte celular programada o apoptosis.</p></li>
+<li><p>¿<strong>Cuál es la fracción de células con contenido de ADN sub-diploide (apoptosis)</strong>? Facilita la identificación y cuantificación de picos o poblaciones con menor cantidad de ADN (<em>sub-G<sub>0</sub></em>), lo cual es un marcador clásico de fragmentación del ADN asociadas a muerte celular programada o apoptosis.</p></li>
 <li><p>¿<strong>Se ha induciod poliploidía o aneuploidía</strong>? Permite detectar anomalías donde las células multiplican su dotación cromosómica más allá de lo normal (por ejemplo, células con contenidos de ADN de 8N o superiores, o picos aneuploides en líneas celulares tumorales).</p></li>
 </ul>
 <section id="ciclo-celular-breve-explicación" class="level2">
 <h2 class="anchored" data-anchor-id="ciclo-celular-breve-explicación">CICLO CELULAR: BREVE EXPLICACIÓN</h2>
-<p>El ciclo celular es un proceso altamente ordenado que resulta en la duplicación y transmisión de la información genética de una generación celular a la siguiente. Durante el proceso, el ADN debe replicarse con precisión y copias cromosómicas idénticas deben distribuirse a dos células hijas <span class="citation" data-cites="collinsCellCycleCancer">(<a href="#ref-collinsCellCycleCancer" role="doc-biblioref">1</a>)</span>. El ciclo celular se divide en fases discretas: G1 (intervalo 1) es el intervalo o pausa entre la mitosis (fase M) y la síntesis de ADN (fase S). Durante la fase G1, la célula está sujeta a la estimulación de mitógenos extracelulares y factores de crecimiento; en respuesta a estos estímulos, la célula pasa a través de G1 y procede con la síntesis de ADN en la fase S; G2 (intervalo 2) es el intervalo entre la finalización de la síntesis de ADN (S) y la mitosis; la fase M se caracteriza por la generación de husos mitóticos bipolares, la segregación de cromátidas hermanas y la división celular <span class="citation" data-cites="nurseUnderstandingCellCycle1998">(<a href="#ref-nurseUnderstandingCellCycle1998" role="doc-biblioref">2</a>)</span>.</p>
+<p>El ciclo celular es un proceso altamente ordenado que resulta en la duplicación y transmisión de la información genética de una generación celular a la siguiente. Durante el proceso, el ADN debe replicarse con precisión y copias cromosómicas idénticas deben distribuirse a dos células hijas <span class="citation" data-cites="collinsCellCycleCancer">(<a href="#ref-collinsCellCycleCancer" role="doc-biblioref">1</a>)</span>. El ciclo celular se divide en fases discretas: <em>G<sub>1</sub></em> (intervalo 1) es el intervalo o pausa entre la mitosis (fase <em>M</em>) y la síntesis de ADN (fase <em>S</em>). Durante la fase <em>G<sub>1</sub></em>, la célula está sujeta a la estimulación de mitógenos extracelulares y factores de crecimiento; en respuesta a estos estímulos, la célula pasa a través de <em>G<sub>1</sub></em> y procede con la síntesis de ADN en la fase <em>S</em>; <em>G<sub>2</sub></em> (intervalo 2) es el intervalo entre la finalización de la síntesis de ADN (<em>S</em>) y la mitosis; la fase M se caracteriza por la generación de husos mitóticos bipolares, la segregación de cromátidas hermanas y la división celular <span class="citation" data-cites="nurseUnderstandingCellCycle1998">(<a href="#ref-nurseUnderstandingCellCycle1998" role="doc-biblioref">2</a>)</span>.</p>
 <p><img src="../imagenes/ciclo/fig_1.jpg" class="img-fluid" alt="Ciclo celular."> *Imagen realizada con Gemini 3.5 Flash-Lite.</p>
 </section>
 </section>
@@ -414,13 +411,13 @@ Nota
 <figcaption>IP</figcaption>
 </figure>
 </div>
-<p>El IP tiñe todo el ácido nucleico de la célula de forma estequiométrica.</p>
 </section>
 </section>
 <section id="metodología" class="level1">
 <h1>METODOLOGÍA</h1>
-<section id="tinción---ioduro-de-propidio" class="level2">
-<h2 class="anchored" data-anchor-id="tinción---ioduro-de-propidio">TINCIÓN - IODURO DE PROPIDIO</h2>
+<section id="tinción---yoduro-de-propidio" class="level2">
+<h2 class="anchored" data-anchor-id="tinción---yoduro-de-propidio">TINCIÓN - YODURO DE PROPIDIO</h2>
+<p>El IP tiñe todo el ácido nucleico de la célula de forma estequiométrica.</p>
 </section>
 <section id="reactivos-necesarios" class="level2">
 <h2 class="anchored" data-anchor-id="reactivos-necesarios">REACTIVOS NECESARIOS</h2>
@@ -442,8 +439,8 @@ Nota
 </div>
 <ul>
 <li><p>Tampón fosfato salino (PBS).</p></li>
-<li><p>Solución RNasa A (100 g/mL o concentración equivalente según fabricante).</p></li>
-<li><p>Solución de Yoduro de Propidio (50 μg/mL comercial o diluida en PBS).</p></li>
+<li><p>Solución RNasa A (100 mg/mL o concentración equivalente según fabricante).</p></li>
+<li><p>Solución de Yoduro de Propidio (50 <span class="math inline">\(\mu g/mL\)</span> comercial o diluida en PBS).</p></li>
 </ul>
 </section>
 <section id="protocolo" class="level2">
@@ -628,7 +625,7 @@ Tip
 <section id="protocolo-2" class="level3">
 <h3 class="anchored" data-anchor-id="protocolo-2">PROTOCOLO</h3>
 <ol type="1">
-<li><p>Centrifugar la suspensión celular (aprox. 1 x 10<sup>6</sup> células) a 300 - 500 g por 5 minutos y decantar el medio.</p></li>
+<li><p>Centrifugar la suspensión celular (aprox. 1 x 10<sup>6</sup> células) a 300 - 500 <em>g</em> por 5 minutos y decantar el medio.</p></li>
 <li><p>Lavar una vez resuspendiendo en 1 - 2 mL de PBS frío y volver a centrifugar.</p></li>
 <li><p>Resuspender el botón celular en el remanente de PBS.</p></li>
 <li><p>Fijar con etano: Agregar 1 mL de etanol al 70% helado gota a gota mientras agitas suavemente en vórtex. Incubar a -20 °C durante al menos 2 horas.</p></li>
@@ -647,9 +644,9 @@ Importante
 </div>
 </div>
 <ol start="5" type="1">
-<li><p>Centrifugar a 500-800 g durante 5 minutos para sedimentar las células (especialmente si usaste etanol).</p></li>
+<li><p>Centrifugar a 500-800 <em>g</em> durante 5 minutos para sedimentar las células (especialmente si usaste etanol).</p></li>
 <li><p>Lavar dos veces con etanol 2 mL de PBS frío para eliminar por completo el fijador.</p></li>
-<li><p>Resuspender el botón celular final en 500 L de la solución de tinción DAPI (1 - 5 μg/mL).</p></li>
+<li><p>Resuspender el botón celular final en 500 L de la solución de tinción DAPI (1 - 5 <span class="math inline">\(\mu g/mL\)</span>).</p></li>
 <li><p>Incubar durante 15 a 30 minutos a temperatura ambiente protegidos de la luz.</p></li>
 </ol>
 <div class="callout callout-style-default callout-note callout-titled">
@@ -668,13 +665,9 @@ Nota
 <p>El DAPI es semi-permeable a la membrana de células vivas, pero si se utiliza a una concentración más alta, puede ingresar a células viables sin necesidad de fijarlas.</p>
 <ol type="1">
 <li><p>Cosechar y lavar células vivas con PBS.</p></li>
-<li><p>Resuspender en PBS que contenga 10 μg/mL de DAPI y Tritón X-100 al 0.1%.</p></li>
+<li><p>Resuspender en PBS que contenga 10 <span class="math inline">\(\mu g/mL\)</span> de DAPI y Tritón X-100 al 0.1%.</p></li>
 <li><p>Incubar por 30 - 45 minutos a 37 °C en la oscuridad y pasar directamente al citómetro.</p></li>
 </ol>
-<hr>
-<div style="text-align: center; margin-top: 3rem; color: #6c757d; font-size: 0.9rem;">
-<p>Hecho con 💙 por Jairo</p>
-</div>
 
 
 
