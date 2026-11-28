@@ -1,101 +1,122 @@
 [
   {
-    "objectID": "recursos/cuaderno-interactivo.html",
-    "href": "recursos/cuaderno-interactivo.html",
-    "title": "🔬 CUADERNO INTERACTIVO DE LITERATURA",
+    "objectID": "recursos/entorno.html",
+    "href": "recursos/entorno.html",
+    "title": "PREPARACIÓN DEL ENTORNO",
     "section": "",
-    "text": "En el CITOverso hemos preparado un entorno interactivo con más de 60 artículos especializados en citometría de flujo, diseñado para que realices consultas asistidas por IA directamente sobre la literatura de esta disciplina.\n\n\n\nHaz clic en el botón inferior (o escanea el código QR con la cámara de tu móvil) para acceder al entorno interactivo.\nLa web del cuaderno interactivo es pública, pero Gemini Notebook requiere que inicies sesión con cualquier cuenta de Google (Gmail personal o institucional). No requiere registro previo ni pagos.\nEn la barra de chat podrás realizar preguntas directamente sobre los artículos, por ejemplo:\n\n“¿Cuáles son los fluorocromos más comunes y sus longitudes de onda de excitación?”\n“Resume los criterios de compensación descritos en los artículos.”\n“Compara las estrategias de gating propuestas en la literatura.”\n\n\n🚀 Abrir Cuaderno de Citometría en Gemini Notebook\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAdvertencia⚠️ AVISO LEGAL ⚠️\n\n\n\nEl CITOverso y su cuaderno interactivo de literatura se ofrecen estrictamente con fines educativos, informativos y de difusión científica.\n\nNaturaleza de la IA: Las respuestas generadas por el asistente de Gemini Notebook provienen del análisis automatizado de literatura especializada. Aunque se basan en fuentes rigurosas, pueden contener imprecisiones, alucinaciones o interpretaciones parciales.\nUso clínico y diagnóstico: Bajo ninguna circunstancia este recurso debe utilizarse como sustituto del criterio médico, diagnóstico clínico, validación diagnóstica en laboratorios de diagnóstico ni como guía para la toma de decisiones clínicas en pacientes.\nResponsabilidad: Los creadores de el CITOverso no asumen ninguna responsabilidad directa ni indirecta por el uso, interpretación o aplicación que los usuarios hagan de la información derivada de este entorno de IA. La validación experimental y bibliográfica final recae exclusivamente en el investigador, profesional u operador.\n\n\n\n\n\nHecho con 💙 por CITOverso"
+    "text": "Antes de comenzar con las actividades, es fundamental preparar un entorno computacional reproducible y actualizado. En el CITOverso utilizamos Positron (el entorno de desarrollo integrado de Posit) como nuestra IDE principal de trabajo. A continuación, instalaremos el lenguaje base R, configuraremos Positron e incorporaremos las herramientas del sistema y dependencias bioinformáticas necesarias para el análisis de datos de citometría de flujo. Sigue los pasos en orden para asegurar la compatibilidad entre todos los paquetes.\n\n\n\nLa versión de R con la que se trabajará durante el curso es la 4.6.1.\n\nR: Descárgalo e instálalo directamente desde el sitio oficial de CRAN.\n\n\n\n\n\n\n\nNotaNota\n\n\n\nEn equipos Mac con procesador Apple Silicon (chips M1, M2, M3 o superiores), asegúrate de descargar e instalar la versión ARM64 de R para garantizar el rendimiento nativo.\n\n\n\nPositron: Descárgalo e instálalo desde la página oficial de Positron.\n\n\n\n\nMuchos paquetes de R necesitan compilar código C/C++ o Fortran durante la instalación. Asegúrate de tener listas las herramientas de tu sistema operativo:\n\n\n\n\n\n\n\n\nImportante\n\n\n\nSe recomienda desactivar el Control inteligente de aplicaciones (Smart App Control) en Windows cada vez que se trabaje en R / Positron, ya que puede bloquear la instalación o ejecución de algunos paquetes necesarios para el curso.\n\n\nDescarga e instala Rtools (debe coincidir con la versión de R instalada; por ejemplo, para R 4.6.x asegúrate de descargar la versión de Rtools correspondiente desde el sitio oficial de CRAN); para la versión de R 4.6.1 se recomienda instalar Rtools 4.5).\n\n\n\nAbre la aplicación Terminal en tu Mac (puedes buscarla presionando las teclas Command + Barra espaciadora y escribiendo Terminal). Copia y pega el siguiente comando:\nxcode-select --install\nPresiona Enter y sigue las instrucciones emergentes en pantalla para instalar las herramientas de línea de comandos de Xcode.\n\n\n\n\nAbre Positron y asegúrate de estar posicionado en la consola (no en la terminal del sistema). A continuación, instalaremos las dependencias necesarias por bloques.\nPaso 1: Paquetes desde CRAN\nCopia y ejecuta el siguiente comando en la consola para instalar las herramientas principales:\ninstall.packages(c(\"scattermore\", \"Rtsne\", \"circlize\", \"uwot\", \"ggplot2\"))\nPaso 2: Configuración del repositorio Bioconductor\nPara instalar paquetes especializados en citometría de flujo, requerimos el gestor oficial BiocManager(). Si ya lo tienes instalado, este bloque lo omitirá automáticamente: .\nif (!require(\"BiocManager\", quietly = TRUE))\n  install.packages(\"BiocManager\")\nBiocManager::install(version = \"3.23\")\nPaso 3: Instalación de paquetes de Bioconductor\nUna vez asegurado el gestor, copia y ejecuta este bloque para instalar los paquetes de análisis citométrico (como flowCore, FlowSOM y ggcyto):\nBiocManager::install(c(\"flowCore\", \"FlowSOM\", \"ggcyto\", \"flowWorkspace\", \"ComplexHeatmap\", \"CytoML\"))\nPaso 4: Verificación del entorno\nPara asegurarte de que todo se instaló correctamente y las librerías cargan sin problemas, copia y ejecuta este último bloque de código en la consola:\npaquetes &lt;- c(\"scattermore\", \"Rtsne\", \"circlize\", \"uwot\", \"ggplot2\", \"flowCore\", \"FlowSOM\", \"ggcyto\", \"flowWorkspace\")\ninvisible(lapply(paquetes, library, character.only = TRUE))\n\n\n\n\n\n\nNotaNota\n\n\n\nSi no aparece ningún error de tipo \"there is no package called...\", tu entorno está listo para el curso.\n\n\n\n\nHecho con 💙 por CITOverso"
   },
   {
-    "objectID": "recursos/cuaderno-interactivo.html#cómo-acceder-y-usar-este-recurso",
-    "href": "recursos/cuaderno-interactivo.html#cómo-acceder-y-usar-este-recurso",
-    "title": "🔬 CUADERNO INTERACTIVO DE LITERATURA",
+    "objectID": "recursos/entorno.html#r-positron-y-paquetes",
+    "href": "recursos/entorno.html#r-positron-y-paquetes",
+    "title": "PREPARACIÓN DEL ENTORNO",
     "section": "",
-    "text": "Haz clic en el botón inferior (o escanea el código QR con la cámara de tu móvil) para acceder al entorno interactivo.\nLa web del cuaderno interactivo es pública, pero Gemini Notebook requiere que inicies sesión con cualquier cuenta de Google (Gmail personal o institucional). No requiere registro previo ni pagos.\nEn la barra de chat podrás realizar preguntas directamente sobre los artículos, por ejemplo:\n\n“¿Cuáles son los fluorocromos más comunes y sus longitudes de onda de excitación?”\n“Resume los criterios de compensación descritos en los artículos.”\n“Compara las estrategias de gating propuestas en la literatura.”\n\n\n🚀 Abrir Cuaderno de Citometría en Gemini Notebook"
+    "text": "Antes de comenzar con las actividades, es fundamental preparar un entorno computacional reproducible y actualizado. En el CITOverso utilizamos Positron (el entorno de desarrollo integrado de Posit) como nuestra IDE principal de trabajo. A continuación, instalaremos el lenguaje base R, configuraremos Positron e incorporaremos las herramientas del sistema y dependencias bioinformáticas necesarias para el análisis de datos de citometría de flujo. Sigue los pasos en orden para asegurar la compatibilidad entre todos los paquetes."
   },
   {
-    "objectID": "recursos/cuaderno-interactivo.html#deslinde-de-responsabilidades",
-    "href": "recursos/cuaderno-interactivo.html#deslinde-de-responsabilidades",
-    "title": "🔬 CUADERNO INTERACTIVO DE LITERATURA",
+    "objectID": "recursos/entorno.html#instalación-de-r-y-positron",
+    "href": "recursos/entorno.html#instalación-de-r-y-positron",
+    "title": "PREPARACIÓN DEL ENTORNO",
     "section": "",
-    "text": "Advertencia⚠️ AVISO LEGAL ⚠️\n\n\n\nEl CITOverso y su cuaderno interactivo de literatura se ofrecen estrictamente con fines educativos, informativos y de difusión científica.\n\nNaturaleza de la IA: Las respuestas generadas por el asistente de Gemini Notebook provienen del análisis automatizado de literatura especializada. Aunque se basan en fuentes rigurosas, pueden contener imprecisiones, alucinaciones o interpretaciones parciales.\nUso clínico y diagnóstico: Bajo ninguna circunstancia este recurso debe utilizarse como sustituto del criterio médico, diagnóstico clínico, validación diagnóstica en laboratorios de diagnóstico ni como guía para la toma de decisiones clínicas en pacientes.\nResponsabilidad: Los creadores de el CITOverso no asumen ninguna responsabilidad directa ni indirecta por el uso, interpretación o aplicación que los usuarios hagan de la información derivada de este entorno de IA. La validación experimental y bibliográfica final recae exclusivamente en el investigador, profesional u operador.\n\n\n\n\n\nHecho con 💙 por CITOverso"
+    "text": "La versión de R con la que se trabajará durante el curso es la 4.6.1.\n\nR: Descárgalo e instálalo directamente desde el sitio oficial de CRAN.\n\n\n\n\n\n\n\nNotaNota\n\n\n\nEn equipos Mac con procesador Apple Silicon (chips M1, M2, M3 o superiores), asegúrate de descargar e instalar la versión ARM64 de R para garantizar el rendimiento nativo.\n\n\n\nPositron: Descárgalo e instálalo desde la página oficial de Positron."
+  },
+  {
+    "objectID": "recursos/entorno.html#herramientas-de-compilación-de-paquetes",
+    "href": "recursos/entorno.html#herramientas-de-compilación-de-paquetes",
+    "title": "PREPARACIÓN DEL ENTORNO",
+    "section": "",
+    "text": "Muchos paquetes de R necesitan compilar código C/C++ o Fortran durante la instalación. Asegúrate de tener listas las herramientas de tu sistema operativo:\n\n\n\n\n\n\n\n\nImportante\n\n\n\nSe recomienda desactivar el Control inteligente de aplicaciones (Smart App Control) en Windows cada vez que se trabaje en R / Positron, ya que puede bloquear la instalación o ejecución de algunos paquetes necesarios para el curso.\n\n\nDescarga e instala Rtools (debe coincidir con la versión de R instalada; por ejemplo, para R 4.6.x asegúrate de descargar la versión de Rtools correspondiente desde el sitio oficial de CRAN); para la versión de R 4.6.1 se recomienda instalar Rtools 4.5).\n\n\n\nAbre la aplicación Terminal en tu Mac (puedes buscarla presionando las teclas Command + Barra espaciadora y escribiendo Terminal). Copia y pega el siguiente comando:\nxcode-select --install\nPresiona Enter y sigue las instrucciones emergentes en pantalla para instalar las herramientas de línea de comandos de Xcode."
+  },
+  {
+    "objectID": "recursos/entorno.html#paquetes-requeridos-para-el-taller",
+    "href": "recursos/entorno.html#paquetes-requeridos-para-el-taller",
+    "title": "PREPARACIÓN DEL ENTORNO",
+    "section": "",
+    "text": "Abre Positron y asegúrate de estar posicionado en la consola (no en la terminal del sistema). A continuación, instalaremos las dependencias necesarias por bloques.\nPaso 1: Paquetes desde CRAN\nCopia y ejecuta el siguiente comando en la consola para instalar las herramientas principales:\ninstall.packages(c(\"scattermore\", \"Rtsne\", \"circlize\", \"uwot\", \"ggplot2\"))\nPaso 2: Configuración del repositorio Bioconductor\nPara instalar paquetes especializados en citometría de flujo, requerimos el gestor oficial BiocManager(). Si ya lo tienes instalado, este bloque lo omitirá automáticamente: .\nif (!require(\"BiocManager\", quietly = TRUE))\n  install.packages(\"BiocManager\")\nBiocManager::install(version = \"3.23\")\nPaso 3: Instalación de paquetes de Bioconductor\nUna vez asegurado el gestor, copia y ejecuta este bloque para instalar los paquetes de análisis citométrico (como flowCore, FlowSOM y ggcyto):\nBiocManager::install(c(\"flowCore\", \"FlowSOM\", \"ggcyto\", \"flowWorkspace\", \"ComplexHeatmap\", \"CytoML\"))\nPaso 4: Verificación del entorno\nPara asegurarte de que todo se instaló correctamente y las librerías cargan sin problemas, copia y ejecuta este último bloque de código en la consola:\npaquetes &lt;- c(\"scattermore\", \"Rtsne\", \"circlize\", \"uwot\", \"ggplot2\", \"flowCore\", \"FlowSOM\", \"ggcyto\", \"flowWorkspace\")\ninvisible(lapply(paquetes, library, character.only = TRUE))\n\n\n\n\n\n\nNotaNota\n\n\n\nSi no aparece ningún error de tipo \"there is no package called...\", tu entorno está listo para el curso.\n\n\n\n\nHecho con 💙 por CITOverso"
+  },
+  {
+    "objectID": "privacidad.html",
+    "href": "privacidad.html",
+    "title": "Aviso de Privacidad y Tratamiento de Datos",
+    "section": "",
+    "text": "El CITOverso (en adelante, “la Plataforma”), con correo electrónico de contacto citoverso@gmail.com, es responsable del tratamiento, resguardo y confidencialidad de los datos personales que nos proporciones a través de nuestro sitio web y formularios de registro."
+  },
+  {
+    "objectID": "privacidad.html#datos-personales-que-recabamos",
+    "href": "privacidad.html#datos-personales-que-recabamos",
+    "title": "Aviso de Privacidad y Tratamiento de Datos",
+    "section": "1. Datos personales que recabamos",
+    "text": "1. Datos personales que recabamos\nPara cumplir con las finalidades descritas en este aviso, podremos solicitar los siguientes datos de identificación y contacto:\n\nNombre completo.\nCorreo electrónico (institucional o personal).\nInstitución, centro de investigación, laboratorio o empresa de adscripción.\nInformación académica o profesional relacionada con tu interés en nuestros cursos, talleres o recursos.\n\nEl CITOverso no recaba datos personales sensibles (como origen racial, estado de salud, creencias religiosas o datos financieros) a través de sus formularios web."
+  },
+  {
+    "objectID": "privacidad.html#finalidades-del-tratamiento-de-datos",
+    "href": "privacidad.html#finalidades-del-tratamiento-de-datos",
+    "title": "Aviso de Privacidad y Tratamiento de Datos",
+    "section": "2. Finalidades del tratamiento de datos",
+    "text": "2. Finalidades del tratamiento de datos\nLos datos personales que recabamos serán utilizados exclusivamente para las siguientes finalidades primarias:\n\nGestión académica y de registro: Procesar tu preinscripción, confirmar disponibilidad de cupo y enviar enlaces de acceso o materiales previos a los cursos y talleres ofertados.\nAtención a solicitudes: Dar respuesta a consultas técnicas, solicitudes de información sobre programas académicos o propuestas de talleres colaborativos e institucionales.\nComunicaciones operativas: Notificar cambios de horarios, actualizaciones en los programas de estudio o avisos relevantes vinculados directamente con el curso o consulta solicitada.\n\nDe manera secundaria, y únicamente si así lo autorizas, podremos enviarte información sobre nuevas ediciones de cursos, actualizaciones en el blog o recursos educativos de El CITOverso."
+  },
+  {
+    "objectID": "privacidad.html#herramientas-de-terceros-y-transferencia-de-datos",
+    "href": "privacidad.html#herramientas-de-terceros-y-transferencia-de-datos",
+    "title": "Aviso de Privacidad y Tratamiento de Datos",
+    "section": "3. Herramientas de terceros y transferencia de datos",
+    "text": "3. Herramientas de terceros y transferencia de datos\nPara la recepción y organización de los registros, este sitio utiliza formularios incrustados de terceros (Google Forms). Al enviar tus datos a través de dichos formularios, la información se almacena de forma segura en los servidores de dichos proveedores bajo sus respectivos estándares de seguridad y políticas de privacidad.\nEl CITOverso no vende, alquila, cede ni comparte tus datos personales con terceros con fines comerciales o publicitarios."
+  },
+  {
+    "objectID": "privacidad.html#derechos-arco-y-revocación-del-consentimiento",
+    "href": "privacidad.html#derechos-arco-y-revocación-del-consentimiento",
+    "title": "Aviso de Privacidad y Tratamiento de Datos",
+    "section": "4. Derechos ARCO y revocación del consentimiento",
+    "text": "4. Derechos ARCO y revocación del consentimiento\nComo titular de tus datos personales, tienes derecho a Acceder a ellos, Rectificarlos en caso de ser inexactos, Cancelarlos cuando consideres que no se requieren para las finalidades señaladas, u Oponerte a su tratamiento para fines específicos (Derechos ARCO), así como a revocar el consentimiento otorgado.\nPara ejercer cualquiera de estos derechos, envía una solicitud al correo electrónico citoverso@gmail.com indicando:\n\nTu nombre completo y correo electrónico con el que te registraste.\nLa descripción clara de los datos sobre los que deseas ejercer alguno de tus derechos (por ejemplo, solicitar la baja de nuestra lista de registros).\n\nTu solicitud será atendida en un plazo máximo de 10 días hábiles."
+  },
+  {
+    "objectID": "privacidad.html#cambios-al-aviso-de-privacidad",
+    "href": "privacidad.html#cambios-al-aviso-de-privacidad",
+    "title": "Aviso de Privacidad y Tratamiento de Datos",
+    "section": "5. Cambios al aviso de privacidad",
+    "text": "5. Cambios al aviso de privacidad\nEl CITOverso se reserva el derecho de actualizar este Aviso de Privacidad para adaptarlo a novedades legislativas o mejoras en la plataforma. Cualquier modificación estará disponible de forma permanente en esta misma sección.\nÚltima actualización: noviembre de 2026."
   },
   {
     "objectID": "Libros/index.html",
     "href": "Libros/index.html",
     "title": "Informática",
     "section": "",
-    "text": "Anatomía de la terminal\n\n\nIntérpretes de línea de comandos: Windows PowerShell, PowerShell y Bash al descubierto\n\n\n\n\n\n\n\n\n\nPREPARACIÓN DEL ENTORNO\n\n\n\n\n\n\n\n\nNo hay resultados"
+    "text": "Anatomía de la terminal\n\n\nIntérpretes de línea de comandos: Windows PowerShell, PowerShell y Bash al descubierto\n\n\n\n\n\nNo hay resultados"
   },
   {
-    "objectID": "index.html",
-    "href": "index.html",
-    "title": "El CITOverso 🔬",
+    "objectID": "guias/index.html",
+    "href": "guias/index.html",
+    "title": "TALLERES",
     "section": "",
-    "text": "Comprender la célula con precisión es el primer paso para descifrar los grandes enigmas de la biología."
+    "text": "PrecauciónSECCIÓN EN DESARROLLO 🛠️\n\n\n\nEstamos calibrando los detectores y preparando contenidos de alta precisión para esta sección. Muy pronto estará disponible con todo el rigor metodológico que caracteriza a el CITOverso.\n\n\nAquí encontrarás recursos y material de apoyo para el desarrollo de talleres junto a nuestros colaboradores comerciales e institucionales.\n\n\nHecho con 💙 por CITOverso"
   },
   {
-    "objectID": "index.html#bienvenidos-a-bordo",
-    "href": "index.html#bienvenidos-a-bordo",
-    "title": "El CITOverso 🔬",
-    "section": "BIENVENIDOS A BORDO",
-    "text": "BIENVENIDOS A BORDO\nLa citometría de flujo es mucho más que una técnica analítica: es una ventana al comportamiento celular que impulsa los descubrimientos más avanzados en biomedicina, inmunología y ciencia de vanguardia. Sin embargo, dominar la adquisición de datos, la compensación espectral y el análisis multidimensional requiere tanto rigor teórico como práctica constante.\nEl CITOverso nace como un espacio integral de divulgación científica, recursos técnicos y formación especializada enfocado exclusivamente en la investigación de alto nivel."
-  },
-  {
-    "objectID": "index.html#nuestra-misión",
-    "href": "index.html#nuestra-misión",
-    "title": "El CITOverso 🔬",
-    "section": "NUESTRA MISIÓN",
-    "text": "NUESTRA MISIÓN\nNuestra misión es democratizar y elevar la calidad del conocimiento en citometría de flujo, transformando conceptos técnicos complejos en herramientas prácticas y accesibles para la comunidad científica iberoamericana.\nBuscamos cerrar la brecha entre la teoría académica y la realidad del laboratorio, proporcionando a los investigadores la confianza metodológica necesaria para diseñar experimentos sólidos, optimizar paneles multicolores y extraer conclusiones fiables de sus datos."
-  },
-  {
-    "objectID": "index.html#nuestro-enfoque-pedagógico",
-    "href": "index.html#nuestro-enfoque-pedagógico",
-    "title": "El CITOverso 🔬",
-    "section": "NUESTRO ENFOQUE PEDAGÓGICO",
-    "text": "NUESTRO ENFOQUE PEDAGÓGICO\nEl CITOverso se fundamenta en tres pilares que guían cada uno de nuestros artículos, guías y programas formativos:\n\nRigor científico y técnico: No nos quedamos en la superficie. Abordamos los fundamentos físicos, ópticos y matemáticos que sustentan la tecnología, promoviendo buenas prácticas de control de calidad, calibración y estandarización.\nEnfoque práctico (De la teoría a la consola): Cada contenido está diseñado pensando en el día a día del laboratorio. Combinamos la explicación teórica con flujos de trabajo reales, uso de herramientas de código (como R y Python) y metodologías aplicadas.\nInnovación educativa: Integramos recursos modernos —como entornos interactivos y asistentes basados en literatura especializada— para que el aprendizaje sea dinámico, accesible y enfocado en la resolución de problemas reales.\n\n\n¿Qué encontrarás en este espacio?\n\nLiteratura y consulta asistida: Un entorno dinámico con acceso a recursos bibliográficos seleccionados y herramientas de IA orientadas a resolver dudas técnicas y metodológicas sobre citometría.\nFormación académica y talleres prácticos: Programas diseñados por expertos para acompañarte paso a paso —desde los fundamentos físicos de la óptica y la fluídica hasta el diseño de paneles avanzados y estrategias complejas de gating con R y Python—.\nComunidad y actualización: Materiales de referencia, guías de troubleshooting y herramientas interactivas pensadas para optimizar el día a día en el laboratorio."
-  },
-  {
-    "objectID": "index.html#la-mente-creativa-detrás-de-el-citoverso",
-    "href": "index.html#la-mente-creativa-detrás-de-el-citoverso",
-    "title": "El CITOverso 🔬",
-    "section": "LA MENTE CREATIVA DETRÁS DE EL CITOverso",
-    "text": "LA MENTE CREATIVA DETRÁS DE EL CITOverso\n\n\n\n\n\n\nJairo R. Villanueva-Toledo\nA cargo del diseño de las sesiones, materiales prácticos y la comunidad de aprendizaje."
-  },
-  {
-    "objectID": "index.html#deslinde-de-responsabilidades",
-    "href": "index.html#deslinde-de-responsabilidades",
-    "title": "El CITOverso 🔬",
-    "section": "DESLINDE DE RESPONSABILIDADES",
-    "text": "DESLINDE DE RESPONSABILIDADES\n\n\n\n\n\n\nAdvertencia⚠️ AVISO LEGAL ⚠️\n\n\n\nEl CITOverso se ofrece estrictamente con fines educativos, informativos y de difusión científica.\n\nUso clínico y diagnóstico: Bajo ninguna circunstancia la información contenida en este sitio debe utilizarse como sustituto del criterio médico, diagnóstico clínico, validación diagnóstica en laboratorios de diagnóstico ni como guía para la toma de decisiones clínicas en pacientes.\nResponsabilidad: Los creadores de el CITOverso no asumen ninguna responsabilidad directa ni indirecta por el uso, interpretación o aplicación que los usuarios hagan de la información derivada de este sitio. La validación experimental y bibliográfica final recae exclusivamente en el investigador, profesional u operador.\n\n\n\n\n\nHecho con 💙 por CITOverso"
-  },
-  {
-    "objectID": "extra.html",
-    "href": "extra.html",
-    "title": "CITOverso",
+    "objectID": "cursos/cursos.html",
+    "href": "cursos/cursos.html",
+    "title": "CATÁLOGO DE CURSOS",
     "section": "",
-    "text": "citoverso@gmail.com\n GitHub\n Facebook"
+    "text": "El análisis de datos citométricos ha evolucionado más allá de las herramientas tradicionales. En el CITOverso diseñamos espacios de formación técnica y práctica enfocados exclusivamente en el procesamiento, exploración y análisis computacional mediante R.\nExplora nuestra oferta de cursos especializados y lleva tus habilidades analíticas desde los fundamentos del control de calidad y el gating clásico hasta la alta dimensionalidad y los algoritmos de clusterización.\n\n\n\n\n\n\n\n\nNota\n\n\n\nEn el CITOverso utilizamos la versión 4.6.1 de R junto con Positron (el entorno de desarrollo integrado de Posit) como nuestra IDE principal de trabajo. Por ello, se recomienda seguir paso a paso la guía de instalación localizada en la sección de Informática antes de comenzar con los cursos.\n\n\n\n\nCurso inicial\n\n\nAprende a procesar y analizar datos citométricos utilizando R. Domina la lectura y transformación de archivos FCS, el pipeline de compensación y transformación, el control de calidad, y adéntrate en el análisis manual tradicional Ver Programa\n\n\n\nCurso avanzado\n\n\nDiseñado para flujos de trabajo complejos de alta dimensionalidad enteramente en R. Profundiza en algoritmos avanzados de clusterización (como FlowSOM), anotación automatizada de poblaciones, corrección computacional de autofluorescencia y estrategias avanzadas de minería de datos celulares con paquetes especializados de Bioconductor (flowCore, ggcyto, etc.). Ver Programa\n\n\n\n\n\nHecho con 💙 por CITOverso"
   },
   {
-    "objectID": "extra.html#contacto-y-comunidad",
-    "href": "extra.html#contacto-y-comunidad",
-    "title": "CITOverso",
+    "objectID": "cursos/cursos.html#cursos-disponibles",
+    "href": "cursos/cursos.html#cursos-disponibles",
+    "title": "CATÁLOGO DE CURSOS",
     "section": "",
-    "text": "citoverso@gmail.com\n GitHub\n Facebook"
+    "text": "Nota\n\n\n\nEn el CITOverso utilizamos la versión 4.6.1 de R junto con Positron (el entorno de desarrollo integrado de Posit) como nuestra IDE principal de trabajo. Por ello, se recomienda seguir paso a paso la guía de instalación localizada en la sección de Informática antes de comenzar con los cursos.\n\n\n\n\nCurso inicial\n\n\nAprende a procesar y analizar datos citométricos utilizando R. Domina la lectura y transformación de archivos FCS, el pipeline de compensación y transformación, el control de calidad, y adéntrate en el análisis manual tradicional Ver Programa\n\n\n\nCurso avanzado\n\n\nDiseñado para flujos de trabajo complejos de alta dimensionalidad enteramente en R. Profundiza en algoritmos avanzados de clusterización (como FlowSOM), anotación automatizada de poblaciones, corrección computacional de autofluorescencia y estrategias avanzadas de minería de datos celulares con paquetes especializados de Bioconductor (flowCore, ggcyto, etc.). Ver Programa\n\n\n\n\n\nHecho con 💙 por CITOverso"
   },
   {
-    "objectID": "cursos/citoverso_II/programa_citoverso_II.html",
-    "href": "cursos/citoverso_II/programa_citoverso_II.html",
+    "objectID": "cursos/citoverso_II/index.html",
+    "href": "cursos/citoverso_II/index.html",
     "title": "Citometría computacional II",
     "section": "",
-    "text": "Sesiones: 5 clases (aprox. 10 horas de dedicación total).\nDuración: 2 horas por clase.\nDistribución modular:\nSemana 1: Repaso rápido y flujos de trabajo avanzados en Bioconductor (flowWorkspace, CytoML).\nSemana 2: Algoritmos de clusterización de alto rendimiento (fundamentos y ejecución práctica de FlowSOM y Phenograph).\nSemana 3: Metodologías de anotación e identificación automatizada de poblaciones celulares.\nSemana 4: Corrección computacional de autofluorescencia y análisis de expresión diferencial entre grupos.\nSemana 5: Integración de flujos de trabajo completos (desde el archivo FCS crudo hasta la generación de figuras de alta dimensionalidad para publicación).\n\n\nHecho con 💙 por CITOverso"
+    "text": "¡Próximamente! 🚧\nEstamos preparando los materiales, guías y herramientas prácticas para esta sección. Si tienes dudas o quieres enterarte de cuándo estará lista, suscríbete o visítanos más adelante.\nSolicitar inscripción al curso\n\n\nHecho con 💙 por CITOverso"
   },
   {
-    "objectID": "cursos/citoverso_I/programa_citoverso_I.html",
-    "href": "cursos/citoverso_I/programa_citoverso_I.html",
-    "title": "Citometría computacional I",
+    "objectID": "cursos/citoverso_I/index.html",
+    "href": "cursos/citoverso_I/index.html",
+    "title": "Citometría computacional II",
     "section": "",
-    "text": "Sesiones: 5 clases (aprox. 10 horas de dedicación total).\nDuración: 2 horas por clase.\nDistribución modular:\nSemana 1: Introducción al entorno de R/Positron para citometría, sintaxis básica, lectura de archivos FCS y estructuras de datos (flowFrame, flowSet).\nSemana 2: Transformaciones de datos (logicle, arcsinh) y control de calidad automatizado (flowAI o filtrado de anomalías).\nSemana 3: Análisis clásico manual en R (creación de compuertas/gates rectangulares y poligonales con ggcyto).\nSemana 4: Introducción a la reducción de dimensionalidad no supervisada (t-SNE, UMAP) y visualización de mapas celulares.\n\n\nHecho con 💙 por CITOverso"
+    "text": "¡Próximamente! 🚧\nEstamos preparando los materiales, guías y herramientas prácticas para esta sección. Si tienes dudas o quieres enterarte de cuándo estará lista, suscríbete o visítanos más adelante.\nSolicitar inscripción al curso\n\n\nHecho con 💙 por CITOverso"
   },
   {
     "objectID": "blog/index.html",
@@ -203,74 +224,81 @@
     "text": "REACTIVOS NECESARIOS\n\nEtanol al 70% (previamente enfriado a -20 ªC).\n\n\n\n\n\n\n\nNota\n\n\n\nPreparar con agua destilada, no con PBS, para evitar precipitación de sales.\n\n\n\nTampón fosfato salino (PBS).\nDAPI diluido en PBS a una concentración final de 1 a 5 μg/ml.\n\n\n\n\n\n\n\nTip\n\n\n\nOpcional pero recomendado\nTRITON X-100 al 0.1% (si usas PFA para permeabiliza la membrana).\n\n\n\nPROTOCOLO\n\nCentrifugar la suspensión celular (aprox. 1 x 106 células) a 300 - 500 g por 5 minutos y decantar el medio.\nLavar una vez resuspendiendo en 1 - 2 mL de PBS frío y volver a centrifugar.\nResuspender el botón celular en el remanente de PBS.\nFijar con etano: Agregar 1 mL de etanol al 70% helado gota a gota mientras agitas suavemente en vórtex. Incubar a -20 °C durante al menos 2 horas.\n\n\n\n\n\n\n\nImportante\n\n\n\nSi usas PFA al 2%, incubar por 15 minutos a tempertaura ambiente, centrifugar, y luego permeabilizar con Tritón X-100 al 0.1% en PBS por 10 minutos.\n\n\n\nCentrifugar a 500-800 g durante 5 minutos para sedimentar las células (especialmente si usaste etanol).\nLavar dos veces con etanol 2 mL de PBS frío para eliminar por completo el fijador.\nResuspender el botón celular final en 500 L de la solución de tinción DAPI (1 - 5 \\(\\mu g/mL\\)).\nIncubar durante 15 a 30 minutos a temperatura ambiente protegidos de la luz.\n\n\n\n\n\n\n\nNota\n\n\n\nA diferencia del IP, no es necesario lavar el DPAI antes de la lectura; las células se pueden analizar directamente en esta solución.\n\n\nEl DAPI es semi-permeable a la membrana de células vivas, pero si se utiliza a una concentración más alta, puede ingresar a células viables sin necesidad de fijarlas.\n\nCosechar y lavar células vivas con PBS.\nResuspender en PBS que contenga 10 \\(\\mu g/mL\\) de DAPI y Tritón X-100 al 0.1%.\nIncubar por 30 - 45 minutos a 37 °C en la oscuridad y pasar directamente al citómetro."
   },
   {
-    "objectID": "cursos/citoverso_I/index.html",
-    "href": "cursos/citoverso_I/index.html",
+    "objectID": "contacto.html",
+    "href": "contacto.html",
+    "title": "Contacto y Registro",
+    "section": "",
+    "text": "Completa el siguiente formulario para solicitar información o reservar tu lugar en nuestros próximos cursos. Recibirás confirmación directamente en tu correo electrónico.\n\n\nCargando formulario…\n\n\n\n\n\n\n\n\nAl enviar este formulario, aceptas el tratamiento de tus datos personales conforme a nuestro Aviso de Privacidad y Tratamiento de Datos."
+  },
+  {
+    "objectID": "cursos/citoverso_I/programa_citoverso_I.html",
+    "href": "cursos/citoverso_I/programa_citoverso_I.html",
+    "title": "Citometría computacional I",
+    "section": "",
+    "text": "Sesiones: 5 clases (aprox. 10 horas de dedicación total).\nDuración: 2 horas por clase.\nDistribución modular:\nSemana 1: Introducción al entorno de R/Positron para citometría, sintaxis básica, lectura de archivos FCS y estructuras de datos (flowFrame, flowSet).\nSemana 2: Transformaciones de datos (logicle, arcsinh) y control de calidad automatizado (flowAI o filtrado de anomalías).\nSemana 3: Análisis clásico manual en R (creación de compuertas/gates rectangulares y poligonales con ggcyto).\nSemana 4: Introducción a la reducción de dimensionalidad no supervisada (t-SNE, UMAP) y visualización de mapas celulares.\n\n\nHecho con 💙 por CITOverso"
+  },
+  {
+    "objectID": "cursos/citoverso_II/programa_citoverso_II.html",
+    "href": "cursos/citoverso_II/programa_citoverso_II.html",
     "title": "Citometría computacional II",
     "section": "",
-    "text": "¡Próximamente! 🚧\nEstamos preparando los materiales, guías y herramientas prácticas para esta sección. Si tienes dudas o quieres enterarte de cuándo estará lista, suscríbete o visítanos más adelante.\n\n\nHecho con 💙 por CITOverso"
+    "text": "Sesiones: 5 clases (aprox. 10 horas de dedicación total).\nDuración: 2 horas por clase.\nDistribución modular:\nSemana 1: Repaso rápido y flujos de trabajo avanzados en Bioconductor (flowWorkspace, CytoML).\nSemana 2: Algoritmos de clusterización de alto rendimiento (fundamentos y ejecución práctica de FlowSOM y Phenograph).\nSemana 3: Metodologías de anotación e identificación automatizada de poblaciones celulares.\nSemana 4: Corrección computacional de autofluorescencia y análisis de expresión diferencial entre grupos.\nSemana 5: Integración de flujos de trabajo completos (desde el archivo FCS crudo hasta la generación de figuras de alta dimensionalidad para publicación).\n\n\nHecho con 💙 por CITOverso"
   },
   {
-    "objectID": "cursos/citoverso_II/index.html",
-    "href": "cursos/citoverso_II/index.html",
-    "title": "Citometría computacional II",
+    "objectID": "extra.html",
+    "href": "extra.html",
+    "title": "CITOverso",
     "section": "",
-    "text": "¡Próximamente! 🚧\nEstamos preparando los materiales, guías y herramientas prácticas para esta sección. Si tienes dudas o quieres enterarte de cuándo estará lista, suscríbete o visítanos más adelante.\n\n\nHecho con 💙 por CITOverso"
+    "text": "citoverso@gmail.com\n GitHub\n Facebook"
   },
   {
-    "objectID": "cursos/cursos.html",
-    "href": "cursos/cursos.html",
-    "title": "CATÁLOGO DE CURSOS",
+    "objectID": "extra.html#contacto-y-comunidad",
+    "href": "extra.html#contacto-y-comunidad",
+    "title": "CITOverso",
     "section": "",
-    "text": "El análisis de datos citométricos ha evolucionado más allá de las herramientas tradicionales. En el CITOverso diseñamos espacios de formación técnica y práctica enfocados exclusivamente en el procesamiento, exploración y análisis computacional mediante R.\nExplora nuestra oferta de cursos especializados y lleva tus habilidades analíticas desde los fundamentos del control de calidad y el gating clásico hasta la alta dimensionalidad y los algoritmos de clusterización.\n\n\n\n\n\n\n\n\nNota\n\n\n\nEn el CITOverso utilizamos la versión 4.6.1 de R junto con Positron (el entorno de desarrollo integrado de Posit) como nuestra IDE principal de trabajo. Por ello, se recomienda seguir paso a paso la guía de instalación localizada en la sección de Informática antes de comenzar con los cursos.\n\n\n\n\nCurso inicial\n\n\nAprende a procesar y analizar datos citométricos utilizando R. Domina la lectura y transformación de archivos FCS, el pipeline de compensación y transformación, el control de calidad, y adéntrate en el análisis manual tradicional Ver Programa\n\n\n\nCurso avanzado\n\n\nDiseñado para flujos de trabajo complejos de alta dimensionalidad enteramente en R. Profundiza en algoritmos avanzados de clusterización (como FlowSOM), anotación automatizada de poblaciones, corrección computacional de autofluorescencia y estrategias avanzadas de minería de datos celulares con paquetes especializados de Bioconductor (flowCore, ggcyto, etc.). Ver Programa\n\n\n\n\n\nHecho con 💙 por CITOverso"
+    "text": "citoverso@gmail.com\n GitHub\n Facebook"
   },
   {
-    "objectID": "cursos/cursos.html#cursos-disponibles",
-    "href": "cursos/cursos.html#cursos-disponibles",
-    "title": "CATÁLOGO DE CURSOS",
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "El CITOverso 🔬",
     "section": "",
-    "text": "Nota\n\n\n\nEn el CITOverso utilizamos la versión 4.6.1 de R junto con Positron (el entorno de desarrollo integrado de Posit) como nuestra IDE principal de trabajo. Por ello, se recomienda seguir paso a paso la guía de instalación localizada en la sección de Informática antes de comenzar con los cursos.\n\n\n\n\nCurso inicial\n\n\nAprende a procesar y analizar datos citométricos utilizando R. Domina la lectura y transformación de archivos FCS, el pipeline de compensación y transformación, el control de calidad, y adéntrate en el análisis manual tradicional Ver Programa\n\n\n\nCurso avanzado\n\n\nDiseñado para flujos de trabajo complejos de alta dimensionalidad enteramente en R. Profundiza en algoritmos avanzados de clusterización (como FlowSOM), anotación automatizada de poblaciones, corrección computacional de autofluorescencia y estrategias avanzadas de minería de datos celulares con paquetes especializados de Bioconductor (flowCore, ggcyto, etc.). Ver Programa\n\n\n\n\n\nHecho con 💙 por CITOverso"
+    "text": "Comprender la célula con precisión es el primer paso para descifrar los grandes enigmas de la biología."
   },
   {
-    "objectID": "guias/index.html",
-    "href": "guias/index.html",
-    "title": "TALLERES",
-    "section": "",
-    "text": "PrecauciónSECCIÓN EN DESARROLLO 🛠️\n\n\n\nEstamos calibrando los detectores y preparando contenidos de alta precisión para esta sección. Muy pronto estará disponible con todo el rigor metodológico que caracteriza a el CITOverso.\n\n\nAquí encontrarás recursos y material de apoyo para el desarrollo de talleres junto a nuestros colaboradores comerciales e institucionales.\n\n\nHecho con 💙 por CITOverso"
+    "objectID": "index.html#bienvenidos-a-bordo",
+    "href": "index.html#bienvenidos-a-bordo",
+    "title": "El CITOverso 🔬",
+    "section": "BIENVENIDOS A BORDO",
+    "text": "BIENVENIDOS A BORDO\nLa citometría de flujo es mucho más que una técnica analítica: es una ventana al comportamiento celular que impulsa los descubrimientos más avanzados en biomedicina, inmunología y ciencia de vanguardia. Sin embargo, dominar la adquisición de datos, la compensación espectral y el análisis multidimensional requiere tanto rigor teórico como práctica constante.\nEl CITOverso nace como un espacio integral de divulgación científica, recursos técnicos y formación especializada enfocado exclusivamente en la investigación de alto nivel."
   },
   {
-    "objectID": "Libros/entorno.html",
-    "href": "Libros/entorno.html",
-    "title": "PREPARACIÓN DEL ENTORNO",
-    "section": "",
-    "text": "Antes de comenzar con las actividades, es fundamental preparar un entorno computacional reproducible y actualizado. En el CITOverso utilizamos Positron (el entorno de desarrollo integrado de Posit) como nuestra IDE principal de trabajo. A continuación, instalaremos el lenguaje base R, configuraremos Positron e incorporaremos las herramientas del sistema y dependencias bioinformáticas necesarias para el análisis de datos de citometría de flujo. Sigue los pasos en orden para asegurar la compatibilidad entre todos los paquetes.\n\n\n\nLa versión de R con la que se trabajará durante el curso es la 4.6.1.\n\nR: Descárgalo e instálalo directamente desde el sitio oficial de CRAN.\n\n\n\n\n\n\n\nNotaNota\n\n\n\nEn equipos Mac con procesador Apple Silicon (chips M1, M2, M3 o superiores), asegúrate de descargar e instalar la versión ARM64 de R para garantizar el rendimiento nativo.\n\n\n\nPositron: Descárgalo e instálalo desde la página oficial de Positron.\n\n\n\n\nMuchos paquetes de R necesitan compilar código C/C++ o Fortran durante la instalación. Asegúrate de tener listas las herramientas de tu sistema operativo:\n\n\n\n\n\n\n\n\nImportante\n\n\n\nSe recomienda desactivar el Control inteligente de aplicaciones (Smart App Control) en Windows cada vez que se trabaje en R / Positron, ya que puede bloquear la instalación o ejecución de algunos paquetes necesarios para el curso.\n\n\nDescarga e instala Rtools (debe coincidir con la versión de R instalada; por ejemplo, para R 4.6.x asegúrate de descargar la versión de Rtools correspondiente desde el sitio oficial de CRAN); para la versión de R 4.6.1 se recomienda instalar Rtools 4.5).\n\n\n\nAbre la aplicación Terminal en tu Mac (puedes buscarla presionando las teclas Command + Barra espaciadora y escribiendo Terminal). Copia y pega el siguiente comando:\nxcode-select --install\nPresiona Enter y sigue las instrucciones emergentes en pantalla para instalar las herramientas de línea de comandos de Xcode.\n\n\n\n\nAbre Positron y asegúrate de estar posicionado en la consola (no en la terminal del sistema). A continuación, instalaremos las dependencias necesarias por bloques.\nPaso 1: Paquetes desde CRAN\nCopia y ejecuta el siguiente comando en la consola para instalar las herramientas principales:\ninstall.packages(c(\"scattermore\", \"Rtsne\", \"circlize\", \"uwot\", \"ggplot2\"))\nPaso 2: Configuración del repositorio Bioconductor\nPara instalar paquetes especializados en citometría de flujo, requerimos el gestor oficial BiocManager(). Si ya lo tienes instalado, este bloque lo omitirá automáticamente: .\nif (!require(\"BiocManager\", quietly = TRUE))\n  install.packages(\"BiocManager\")\nBiocManager::install(version = \"3.23\")\nPaso 3: Instalación de paquetes de Bioconductor\nUna vez asegurado el gestor, copia y ejecuta este bloque para instalar los paquetes de análisis citométrico (como flowCore, FlowSOM y ggcyto):\nBiocManager::install(c(\"flowCore\", \"FlowSOM\", \"ggcyto\", \"flowWorkspace\", \"ComplexHeatmap\", \"CytoML\"))\nPaso 4: Verificación del entorno\nPara asegurarte de que todo se instaló correctamente y las librerías cargan sin problemas, copia y ejecuta este último bloque de código en la consola:\npaquetes &lt;- c(\"scattermore\", \"Rtsne\", \"circlize\", \"uwot\", \"ggplot2\", \"flowCore\", \"FlowSOM\", \"ggcyto\", \"flowWorkspace\")\ninvisible(lapply(paquetes, library, character.only = TRUE))\n\n\n\n\n\n\nNotaNota\n\n\n\nSi no aparece ningún error de tipo \"there is no package called...\", tu entorno está listo para el curso.\n\n\n\n\nHecho con 💙 por CITOverso"
+    "objectID": "index.html#nuestra-misión",
+    "href": "index.html#nuestra-misión",
+    "title": "El CITOverso 🔬",
+    "section": "NUESTRA MISIÓN",
+    "text": "NUESTRA MISIÓN\nNuestra misión es democratizar y elevar la calidad del conocimiento en citometría de flujo, transformando conceptos técnicos complejos en herramientas prácticas y accesibles para la comunidad científica iberoamericana.\nBuscamos cerrar la brecha entre la teoría académica y la realidad del laboratorio, proporcionando a los investigadores la confianza metodológica necesaria para diseñar experimentos sólidos, optimizar paneles multicolores y extraer conclusiones fiables de sus datos."
   },
   {
-    "objectID": "Libros/entorno.html#r-positron-y-paquetes",
-    "href": "Libros/entorno.html#r-positron-y-paquetes",
-    "title": "PREPARACIÓN DEL ENTORNO",
-    "section": "",
-    "text": "Antes de comenzar con las actividades, es fundamental preparar un entorno computacional reproducible y actualizado. En el CITOverso utilizamos Positron (el entorno de desarrollo integrado de Posit) como nuestra IDE principal de trabajo. A continuación, instalaremos el lenguaje base R, configuraremos Positron e incorporaremos las herramientas del sistema y dependencias bioinformáticas necesarias para el análisis de datos de citometría de flujo. Sigue los pasos en orden para asegurar la compatibilidad entre todos los paquetes."
+    "objectID": "index.html#nuestro-enfoque-pedagógico",
+    "href": "index.html#nuestro-enfoque-pedagógico",
+    "title": "El CITOverso 🔬",
+    "section": "NUESTRO ENFOQUE PEDAGÓGICO",
+    "text": "NUESTRO ENFOQUE PEDAGÓGICO\nEl CITOverso se fundamenta en tres pilares que guían cada uno de nuestros artículos, guías y programas formativos:\n\nRigor científico y técnico: No nos quedamos en la superficie. Abordamos los fundamentos físicos, ópticos y matemáticos que sustentan la tecnología, promoviendo buenas prácticas de control de calidad, calibración y estandarización.\nEnfoque práctico (De la teoría a la consola): Cada contenido está diseñado pensando en el día a día del laboratorio. Combinamos la explicación teórica con flujos de trabajo reales, uso de herramientas de código (como R y Python) y metodologías aplicadas.\nInnovación educativa: Integramos recursos modernos —como entornos interactivos y asistentes basados en literatura especializada— para que el aprendizaje sea dinámico, accesible y enfocado en la resolución de problemas reales.\n\n\n¿Qué encontrarás en este espacio?\n\nLiteratura y consulta asistida: Un entorno dinámico con acceso a recursos bibliográficos seleccionados y herramientas de IA orientadas a resolver dudas técnicas y metodológicas sobre citometría.\nFormación académica y talleres prácticos: Programas diseñados por expertos para acompañarte paso a paso —desde los fundamentos físicos de la óptica y la fluídica hasta el diseño de paneles avanzados y estrategias complejas de gating con R y Python—.\nComunidad y actualización: Materiales de referencia, guías de troubleshooting y herramientas interactivas pensadas para optimizar el día a día en el laboratorio."
   },
   {
-    "objectID": "Libros/entorno.html#instalación-de-r-y-positron",
-    "href": "Libros/entorno.html#instalación-de-r-y-positron",
-    "title": "PREPARACIÓN DEL ENTORNO",
-    "section": "",
-    "text": "La versión de R con la que se trabajará durante el curso es la 4.6.1.\n\nR: Descárgalo e instálalo directamente desde el sitio oficial de CRAN.\n\n\n\n\n\n\n\nNotaNota\n\n\n\nEn equipos Mac con procesador Apple Silicon (chips M1, M2, M3 o superiores), asegúrate de descargar e instalar la versión ARM64 de R para garantizar el rendimiento nativo.\n\n\n\nPositron: Descárgalo e instálalo desde la página oficial de Positron."
+    "objectID": "index.html#la-mente-creativa-detrás-de-el-citoverso",
+    "href": "index.html#la-mente-creativa-detrás-de-el-citoverso",
+    "title": "El CITOverso 🔬",
+    "section": "LA MENTE CREATIVA DETRÁS DE EL CITOverso",
+    "text": "LA MENTE CREATIVA DETRÁS DE EL CITOverso\n\n\n\n\n\n\nJairo R. Villanueva-Toledo\nA cargo del diseño de las sesiones, materiales prácticos y la comunidad de aprendizaje."
   },
   {
-    "objectID": "Libros/entorno.html#herramientas-de-compilación-de-paquetes",
-    "href": "Libros/entorno.html#herramientas-de-compilación-de-paquetes",
-    "title": "PREPARACIÓN DEL ENTORNO",
-    "section": "",
-    "text": "Muchos paquetes de R necesitan compilar código C/C++ o Fortran durante la instalación. Asegúrate de tener listas las herramientas de tu sistema operativo:\n\n\n\n\n\n\n\n\nImportante\n\n\n\nSe recomienda desactivar el Control inteligente de aplicaciones (Smart App Control) en Windows cada vez que se trabaje en R / Positron, ya que puede bloquear la instalación o ejecución de algunos paquetes necesarios para el curso.\n\n\nDescarga e instala Rtools (debe coincidir con la versión de R instalada; por ejemplo, para R 4.6.x asegúrate de descargar la versión de Rtools correspondiente desde el sitio oficial de CRAN); para la versión de R 4.6.1 se recomienda instalar Rtools 4.5).\n\n\n\nAbre la aplicación Terminal en tu Mac (puedes buscarla presionando las teclas Command + Barra espaciadora y escribiendo Terminal). Copia y pega el siguiente comando:\nxcode-select --install\nPresiona Enter y sigue las instrucciones emergentes en pantalla para instalar las herramientas de línea de comandos de Xcode."
-  },
-  {
-    "objectID": "Libros/entorno.html#paquetes-requeridos-para-el-taller",
-    "href": "Libros/entorno.html#paquetes-requeridos-para-el-taller",
-    "title": "PREPARACIÓN DEL ENTORNO",
-    "section": "",
-    "text": "Abre Positron y asegúrate de estar posicionado en la consola (no en la terminal del sistema). A continuación, instalaremos las dependencias necesarias por bloques.\nPaso 1: Paquetes desde CRAN\nCopia y ejecuta el siguiente comando en la consola para instalar las herramientas principales:\ninstall.packages(c(\"scattermore\", \"Rtsne\", \"circlize\", \"uwot\", \"ggplot2\"))\nPaso 2: Configuración del repositorio Bioconductor\nPara instalar paquetes especializados en citometría de flujo, requerimos el gestor oficial BiocManager(). Si ya lo tienes instalado, este bloque lo omitirá automáticamente: .\nif (!require(\"BiocManager\", quietly = TRUE))\n  install.packages(\"BiocManager\")\nBiocManager::install(version = \"3.23\")\nPaso 3: Instalación de paquetes de Bioconductor\nUna vez asegurado el gestor, copia y ejecuta este bloque para instalar los paquetes de análisis citométrico (como flowCore, FlowSOM y ggcyto):\nBiocManager::install(c(\"flowCore\", \"FlowSOM\", \"ggcyto\", \"flowWorkspace\", \"ComplexHeatmap\", \"CytoML\"))\nPaso 4: Verificación del entorno\nPara asegurarte de que todo se instaló correctamente y las librerías cargan sin problemas, copia y ejecuta este último bloque de código en la consola:\npaquetes &lt;- c(\"scattermore\", \"Rtsne\", \"circlize\", \"uwot\", \"ggplot2\", \"flowCore\", \"FlowSOM\", \"ggcyto\", \"flowWorkspace\")\ninvisible(lapply(paquetes, library, character.only = TRUE))\n\n\n\n\n\n\nNotaNota\n\n\n\nSi no aparece ningún error de tipo \"there is no package called...\", tu entorno está listo para el curso.\n\n\n\n\nHecho con 💙 por CITOverso"
+    "objectID": "index.html#deslinde-de-responsabilidades",
+    "href": "index.html#deslinde-de-responsabilidades",
+    "title": "El CITOverso 🔬",
+    "section": "DESLINDE DE RESPONSABILIDADES",
+    "text": "DESLINDE DE RESPONSABILIDADES\n\n\n\n\n\n\nAdvertencia⚠️ AVISO LEGAL ⚠️\n\n\n\nEl CITOverso se ofrece estrictamente con fines educativos, informativos y de difusión científica.\n\nUso clínico y diagnóstico: Bajo ninguna circunstancia la información contenida en este sitio debe utilizarse como sustituto del criterio médico, diagnóstico clínico, validación diagnóstica en laboratorios de diagnóstico ni como guía para la toma de decisiones clínicas en pacientes.\nResponsabilidad: Los creadores de el CITOverso no asumen ninguna responsabilidad directa ni indirecta por el uso, interpretación o aplicación que los usuarios hagan de la información derivada de este sitio. La validación experimental y bibliográfica final recae exclusivamente en el investigador, profesional u operador.\n\n\n\n\n\nHecho con 💙 por CITOverso"
   },
   {
     "objectID": "Libros/terminal.html",
@@ -299,5 +327,26 @@
     "title": "Anatomía de la terminal",
     "section": "Bash (Bourne Again Shell): El estándar de la filosofía Unix",
     "text": "Bash (Bourne Again Shell): El estándar de la filosofía Unix\nBash es el intérprete de comandos por excelencia en sistemas operativos tipo Unix, incluyendo las principales distribuciones de Linux (Ubuntu, Debian, Fedora, entre otras) y, durante muchos años, macOS (donde hoy convive con Zsh).\n\nA diferencia de PowerShell, Bash sigue la filosofía clásica de Unix: “todo es un archivo y todo se comunica mediante flujos de texto plano”. Herramientas pequeñas y altamente especializadas (ls, grep, awk, sed, cat) se encadenan mediante tuberías (|), pasando el texto de salida de un programa como entrada del siguiente.\nPrivilegia comandos breves y directos (mkdir, rm -rf, cd, which) frente a la estructura descriptiva Verbo-Sustantivo característica de PowerShell.\nAunque Windows no lo incluye de fábrica, los desarrolladores suelen utilizarlo mediante Git Bash —un entorno ligero incluido con Git for Windows que emula utilidades esenciales de Linux como nano, grep y ssh— o a través de WSL (Windows Subsystem for Linux), que permite ejecutar un núcleo real de Linux directamente dentro de Windows.\n\n\nComparativa general\n\n\n\n\n\n\n\n\nCaracterística\nWindows PowerShell\nPowerShell (7+)\nBash\n\n\n\n\nDisponibilidad\nSolo Windows (preinstalada)\nMultiplataforma (Windows, macOS, Linux)\nLinux, macOS (y windows via GitBash/WSL)\n\n\nBase tecnológica\n.NET Framework (cerrado)\n.NET moderno (código abierto)\nC/ Estándar POSIX (código abierto)\n\n\nManejo de datos\nObjetos estructurados\nObjetos estructurados\nFlujos de texto plano\n\n\nEstilo de comandos\nVerbo-Sustantivo (Get-Content)\nVerbo-Sustantivo (Get-Content)\nComandos cortos (cat, grep, ls)\n\n\nEstado actual\nEn mantenimiento (v5.1)\nDesarrollo activo\nDesarrollo activo\n\n\n\nEn la práctica, elegir entre estas herramientas ya no implica quedar atrapado en un solo sistema operativo. Si administras entornos Windows o necesitas manipular estructuras de datos complejas sin lidiar con expresiones regulares para extraer texto, PowerShell 7+ ofrece una sintaxis consistente y moderna. Por otro lado, si tu flujo de trabajo gira en torno a servidores Linux, contenedores o pipelines bioinformáticos y de desarrollo ágil, Bash sigue siendo el lenguaje común indispensable.\n\nHecho con 💙 por CITOverso"
+  },
+  {
+    "objectID": "recursos/cuaderno-interactivo.html",
+    "href": "recursos/cuaderno-interactivo.html",
+    "title": "🔬 CUADERNO INTERACTIVO DE LITERATURA",
+    "section": "",
+    "text": "En el CITOverso hemos preparado un entorno interactivo con más de 60 artículos especializados en citometría de flujo, diseñado para que realices consultas asistidas por IA directamente sobre la literatura de esta disciplina.\n\n\n\nHaz clic en el botón inferior (o escanea el código QR con la cámara de tu móvil) para acceder al entorno interactivo.\nLa web del cuaderno interactivo es pública, pero Gemini Notebook requiere que inicies sesión con cualquier cuenta de Google (Gmail personal o institucional). No requiere registro previo ni pagos.\nEn la barra de chat podrás realizar preguntas directamente sobre los artículos, por ejemplo:\n\n“¿Cuáles son los fluorocromos más comunes y sus longitudes de onda de excitación?”\n“Resume los criterios de compensación descritos en los artículos.”\n“Compara las estrategias de gating propuestas en la literatura.”\n\n\n🚀 Abrir Cuaderno de Citometría en Gemini Notebook\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nAdvertencia⚠️ AVISO LEGAL ⚠️\n\n\n\nEl CITOverso y su cuaderno interactivo de literatura se ofrecen estrictamente con fines educativos, informativos y de difusión científica.\n\nNaturaleza de la IA: Las respuestas generadas por el asistente de Gemini Notebook provienen del análisis automatizado de literatura especializada. Aunque se basan en fuentes rigurosas, pueden contener imprecisiones, alucinaciones o interpretaciones parciales.\nUso clínico y diagnóstico: Bajo ninguna circunstancia este recurso debe utilizarse como sustituto del criterio médico, diagnóstico clínico, validación diagnóstica en laboratorios de diagnóstico ni como guía para la toma de decisiones clínicas en pacientes.\nResponsabilidad: Los creadores de el CITOverso no asumen ninguna responsabilidad directa ni indirecta por el uso, interpretación o aplicación que los usuarios hagan de la información derivada de este entorno de IA. La validación experimental y bibliográfica final recae exclusivamente en el investigador, profesional u operador.\n\n\n\n\n\nHecho con 💙 por CITOverso"
+  },
+  {
+    "objectID": "recursos/cuaderno-interactivo.html#cómo-acceder-y-usar-este-recurso",
+    "href": "recursos/cuaderno-interactivo.html#cómo-acceder-y-usar-este-recurso",
+    "title": "🔬 CUADERNO INTERACTIVO DE LITERATURA",
+    "section": "",
+    "text": "Haz clic en el botón inferior (o escanea el código QR con la cámara de tu móvil) para acceder al entorno interactivo.\nLa web del cuaderno interactivo es pública, pero Gemini Notebook requiere que inicies sesión con cualquier cuenta de Google (Gmail personal o institucional). No requiere registro previo ni pagos.\nEn la barra de chat podrás realizar preguntas directamente sobre los artículos, por ejemplo:\n\n“¿Cuáles son los fluorocromos más comunes y sus longitudes de onda de excitación?”\n“Resume los criterios de compensación descritos en los artículos.”\n“Compara las estrategias de gating propuestas en la literatura.”\n\n\n🚀 Abrir Cuaderno de Citometría en Gemini Notebook"
+  },
+  {
+    "objectID": "recursos/cuaderno-interactivo.html#deslinde-de-responsabilidades",
+    "href": "recursos/cuaderno-interactivo.html#deslinde-de-responsabilidades",
+    "title": "🔬 CUADERNO INTERACTIVO DE LITERATURA",
+    "section": "",
+    "text": "Advertencia⚠️ AVISO LEGAL ⚠️\n\n\n\nEl CITOverso y su cuaderno interactivo de literatura se ofrecen estrictamente con fines educativos, informativos y de difusión científica.\n\nNaturaleza de la IA: Las respuestas generadas por el asistente de Gemini Notebook provienen del análisis automatizado de literatura especializada. Aunque se basan en fuentes rigurosas, pueden contener imprecisiones, alucinaciones o interpretaciones parciales.\nUso clínico y diagnóstico: Bajo ninguna circunstancia este recurso debe utilizarse como sustituto del criterio médico, diagnóstico clínico, validación diagnóstica en laboratorios de diagnóstico ni como guía para la toma de decisiones clínicas en pacientes.\nResponsabilidad: Los creadores de el CITOverso no asumen ninguna responsabilidad directa ni indirecta por el uso, interpretación o aplicación que los usuarios hagan de la información derivada de este entorno de IA. La validación experimental y bibliográfica final recae exclusivamente en el investigador, profesional u operador.\n\n\n\n\n\nHecho con 💙 por CITOverso"
   }
 ]
