@@ -1,22 +1,15 @@
 [
   {
-    "listing": "/informatica/index.html",
+    "listing": "/Libros/index.html",
     "items": [
-      "/informatica/terminal.html",
-      "/informatica/entorno.html"
+      "/Libros/terminal.html",
+      "/Libros/entorno.html"
     ]
   },
   {
     "listing": "/blog/index.html",
     "items": [
       "/blog/ciclo.html"
-    ]
-  },
-  {
-    "listing": "/Libros/index.html",
-    "items": [
-      "/Libros/terminal.html",
-      "/Libros/entorno.html"
     ]
   }
 ]
